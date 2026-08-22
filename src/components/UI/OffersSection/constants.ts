@@ -1,47 +1,48 @@
-import seamless_payments from '../../../../public/images/seamless_payments.png';
-import smart_investing from '../../../../public/images/smart_investing.png';
-import wealth_management from '../../../../public/images/wealth_management.png';
-import financial_planning from '../../../../public/images/financial_planning.png';
+import offer_queue from '../../../../public/images/dentgrow/offer_queue.png';
+import offer_patient from '../../../../public/images/dentgrow/offer_patient.png';
+import offer_chart from '../../../../public/images/dentgrow/offer_chart.png';
+import offer_revenue from '../../../../public/images/dentgrow/offer_revenue.png';
+
 // For desktop
 export const desktopHeaderPhrases = [
-  'Elevate Your Financial',
-  'Journey with RAFT',
+  'Everything your clinic',
+  'needs, working together',
 ];
 export const desktopParagraphPhrase = [
-  'RAFT offers a world of financial possibilities. From investments to payments,',
-  "we've got you covered. Join us and unlock your potential today.",
+  'Appointments, patients, clinical work, payments and follow-ups stay connected',
+  'instead of living across disconnected tools.',
 ];
 
 // For mobile
 export const mobileParagraphPhrase = [
-  'RAFT offers a world of financial possibilities. From',
-  "investments to payments, we've got you covered.",
-  'Join us and unlock your potential today.',
+  'Appointments, patients, clinical work, payments',
+  'and follow-ups stay connected instead of living',
+  'across disconnected tools.',
 ];
 
 export const offers = [
   {
-    illustration: seamless_payments,
-    title: 'Seamless Payments',
+    illustration: offer_queue,
+    title: 'Appointments and queue',
     details:
-      'Enjoy secure, seamless transactions that make managing your money a breeze.',
+      'Bookings, check-ins and the day’s queue sit in one place, so the front desk always knows who is waiting and who is next.',
   },
   {
-    illustration: smart_investing,
-    title: 'Smart Investing',
+    illustration: offer_patient,
+    title: 'Patients and history',
     details:
-      'Grow your wealth confidently with our personalized investment solutions, tailored to your financial goals.',
+      'One record per patient: contact details, visit history, notes and what they still owe.',
   },
   {
-    illustration: wealth_management,
-    title: 'Wealth Management',
+    illustration: offer_chart,
+    title: 'Clinical records',
     details:
-      'Make informed decisions for your financial future with our wealth management expertise.',
+      'A dental chart, treatments and consent that stay attached to the patient rather than to a folder.',
   },
   {
-    illustration: financial_planning,
-    title: 'Financial Planning',
+    illustration: offer_revenue,
+    title: 'Billing and payments',
     details:
-      'Achieve your financial dreams with our comprehensive financial planning services, guiding you toward a secure future.',
+      'Bills raised from the treatment that was actually done, with payments and outstanding balances tracked against it.',
   },
 ];

@@ -1,12 +1,19 @@
 'use client';
 import Image from 'next/image';
-import big_banner from '../../../../public/images/big_banner.png';
-import featured_mobile_banner from '../../../../public/images/featured_mobile_banner.png';
+import workspace_banner from '../../../../public/images/dentgrow/dentgrow-main-workspace.png';
+import workspace_banner_mobile from '../../../../public/images/dentgrow/workspace_banner_mobile.png';
 import ParallaxText from '@/components/Common/ParallaxImages';
-import companies_image from '../../../../public/images/companies.png';
-import { Wrapper, Inner, ImageContainer, ParallaxImages, Div } from './styles';
+import {
+  Wrapper,
+  Inner,
+  ImageContainer,
+  ParallaxImages,
+  Div,
+  MarqueeItem,
+} from './styles';
 import RevealCover from '@/components/Common/RevealCover';
 import { useIsMobile } from '../../../../libs/useIsMobile';
+import { connectedAreas } from './constants';
 export const imageVariants = {
   hidden: {
     scale: 1.6,
@@ -36,19 +43,25 @@ const Featured = () => {
           >
             {isMobile ? (
               <Image
-                src={featured_mobile_banner}
-                alt="featured_mobile_banner"
+                src={workspace_banner_mobile}
+                alt="The DentGrow dentist dashboard"
                 fill
               />
             ) : (
-              <Image src={big_banner} alt="big_banner" fill />
+              <Image
+                src={workspace_banner}
+                alt="The DentGrow dentist dashboard"
+                fill
+              />
             )}
           </Div>
         </ImageContainer>
-        <h2>Featured and Seen in</h2>
+        <h2>One system for the way your clinic works</h2>
         <ParallaxImages>
           <ParallaxText baseVelocity={-4}>
-            <Image src={companies_image} alt="comapanies" />
+            {connectedAreas.map((area, i) => (
+              <MarqueeItem key={i}>{area}</MarqueeItem>
+            ))}
           </ParallaxText>
         </ParallaxImages>
       </Inner>

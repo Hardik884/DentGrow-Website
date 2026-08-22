@@ -41,6 +41,10 @@ export const ImageContainer = styled.div`
 
   img {
     object-fit: cover;
+    /* The banner is a screenshot, not a photo: anchor the crop to the top-left
+       so the product's navigation and page header stay in frame at every width,
+       instead of the centre-crop a photograph wants. */
+    object-position: left top;
     border-radius: 0.75rem;
   }
 
@@ -57,6 +61,29 @@ export const ParallaxImages = styled.div`
   position: relative;
   max-width: 53.7rem;
   margin: 3rem auto 0;
+`;
+
+/* One entry in the scrolling list of connected clinic areas. Sits in the slot
+   the press-logo strip used to occupy, and keeps its rhythm. */
+export const MarqueeItem = styled.span`
+  /* Doubled selector: the global \`.scroller span\` rule that lays out the
+     marquee's four repeats is more specific than a single generated class, and
+     would otherwise force each item to \`display: block\` and stack them. */
+  && {
+    display: inline-block;
+    margin-right: 3rem;
+    color: var(--link-color);
+    font-size: 1.5rem;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    && {
+      margin-right: 2rem;
+      font-size: 1.125rem;
+    }
+  }
 `;
 
 export const Div = styled(motion.div)`

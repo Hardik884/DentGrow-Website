@@ -20,12 +20,9 @@ export const Inner = styled.main`
 
 export const FooterLogo = styled.div`
   @media (max-width: 768px) {
-    width: 13.2rem;
-    height: 5.6rem;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    /* The lockup is sized from its own font-size, so one override rescales it. */
+    > div {
+      font-size: 40px;
     }
   }
 `;
@@ -50,39 +47,51 @@ export const FooterMiddle = styled.div`
   }
 `;
 
-export const QRContainer = styled.div`
+/* The dashed box that held the app-store QR code. DentGrow has no mobile app
+   to point at, so the slot keeps its shape and carries the closing call to
+   action instead. */
+export const CallToAction = styled.div`
   display: flex;
   gap: 0.75rem;
-  padding: 1.25rem 1rem;
-  gap: 0.75rem;
+  padding: 1.75rem 1.5rem;
   border-radius: 0.5rem;
   border: 1px dashed var(--White, #fff);
 `;
-
-export const QRImageCtn = styled.div``;
 
 export const TextCtn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
 
+  h3 {
+    max-width: 19.5625rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
   p {
     max-width: 19.5625rem;
+    color: var(--link-color);
     font-size: 1.25rem;
     font-weight: 400;
   }
 
   @media (max-width: 768px) {
+    h3 {
+      font-size: 1.25rem;
+    }
+
     p {
       font-size: 1rem;
     }
   }
 `;
 
-export const IconCtn = styled.div`
+export const ActionCtn = styled.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  margin-top: 0.5rem;
 `;
 
 export const FooterNavigation = styled.div`

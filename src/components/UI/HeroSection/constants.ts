@@ -1,13 +1,14 @@
 // For desktop
-export const phrases = ['Building the future of', 'banking.'];
+export const phrases = ['Your entire clinic,', 'connected.'];
 export const paragraphPhrases = [
-  "Experience the future of banking with RAFT. We're here to",
-  'empower your financial journey.',
+  'DentGrow brings the people, patients and processes that run your',
+  'practice together in one place.',
 ];
 
 // For mobile
-export const mobilePhrases = ['Building the future', 'of banking'];
+export const mobilePhrases = ['Your entire clinic,', 'connected.'];
 export const mobileParagraphPhrases = [
-  "Experience the future of banking with RAFT. We're",
-  'here to empower your financial journey.',
+  'DentGrow brings the people, patients and',
+  'processes that run your practice together',
+  'in one place.',
 ];

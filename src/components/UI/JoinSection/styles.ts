@@ -113,16 +113,31 @@ export const Name = styled.div`
   }
 `;
 
+/* Held a customer's photograph on the original layout. The cards no longer
+   quote a person, so the slot keeps its size and position in the row and
+   carries the icon for the capability the card describes instead. */
 export const Avatar = styled.div`
   margin-left: auto;
+  flex-shrink: 0;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: var(--Background, #070606);
+  display: grid;
+  place-items: center;
+
+  img {
+    width: 2rem;
+    height: 2rem;
+  }
 
   @media (max-width: 768px) {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 3rem;
+    height: 3rem;
 
     img {
-      width: 100%;
-      height: 100%;
+      width: 1.25rem;
+      height: 1.25rem;
     }
   }
 `;

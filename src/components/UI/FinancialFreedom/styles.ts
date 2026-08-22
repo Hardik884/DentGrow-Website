@@ -70,6 +70,9 @@ export const BannerCtn = styled.div`
   img {
     border-radius: 0.75rem;
     object-fit: cover;
+    /* A screenshot, not a photograph: anchor the crop so the patient record
+       above the chart survives narrower viewports. */
+    object-position: left top;
   }
 
   @media (max-width: 768px) {

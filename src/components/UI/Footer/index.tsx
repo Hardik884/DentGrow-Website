@@ -1,23 +1,20 @@
 import Image from 'next/image';
-import raft_footer_logo from '../../../../public/svgs/raft_footer_logo.svg';
-import qr_code from '../../../../public/svgs/qr_code.svg';
-import ic_google_playstore from '../../../../public/svgs/ic_google_playstore.svg';
-import ic_baseline_apple from '../../../../public/svgs/ic_baseline_apple.svg';
 import ic_chevron_down from '../../../../public/svgs/ic_chevron_down.svg';
 import ic_copyright from '../../../../public/svgs/ic_copyright.svg';
+import { GetStartedButton, Logo } from '@/components';
 
 const linksArr = [
   {
-    title: 'About us',
-    links: ['Our Company', 'Careers', 'Press kits'],
+    title: 'Product',
+    links: ['Product', 'Solutions', 'Security', 'Pricing'],
   },
   {
-    title: 'Legal',
-    links: ['Terms of use', 'Privacy policy', 'About us'],
+    title: 'For your clinic',
+    links: ['Dentists', 'Receptionists', 'Clinic owners', 'Patients'],
   },
   {
-    title: 'About us',
-    links: ['Contact us', 'FAQ'],
+    title: 'Company',
+    links: ['Contact', 'Privacy policy', 'Terms of use'],
   },
 ];
 
@@ -27,10 +24,9 @@ import {
   FooterLogo,
   FooterMainContent,
   FooterMiddle,
-  QRContainer,
-  QRImageCtn,
+  CallToAction,
   TextCtn,
-  IconCtn,
+  ActionCtn,
   FooterNavigation,
   GridColumn,
   LinksContainer,
@@ -44,22 +40,24 @@ const Footer = () => {
     <Wrapper>
       <Inner>
         <FooterLogo>
-          <Image src={raft_footer_logo} alt="raft_footer_logo" />
+          <Logo size={56} />
         </FooterLogo>
         <FooterMainContent>
           <FooterMiddle>
-            <QRContainer>
-              <QRImageCtn>
-                <Image src={qr_code} alt="qr_code" />
-              </QRImageCtn>
+            {/* The closing call to action. Book a Demo is the only thing the
+                site asks for — there is no sign-in or account link anywhere. */}
+            <CallToAction>
               <TextCtn>
-                <p>Scan to download App on the Playstore and Appstore.</p>
-                <IconCtn>
-                  <Image src={ic_google_playstore} alt="playstore icon" />
-                  <Image src={ic_baseline_apple} alt="apple icon" />
-                </IconCtn>
+                <h3>Bring your clinic together.</h3>
+                <p>
+                  One connected system for the people, patients and processes
+                  that keep your practice moving.
+                </p>
+                <ActionCtn>
+                  <GetStartedButton padding="0.75rem 1.5rem" />
+                </ActionCtn>
               </TextCtn>
-            </QRContainer>
+            </CallToAction>
             <FooterNavigation>
               {linksArr.map((l, i) => (
                 <GridColumn key={i}>
@@ -80,7 +78,7 @@ const Footer = () => {
             </Translator>
             <CopyRight>
               <Image src={ic_copyright} alt="copyright svg" />
-              Raft Corp, LLC.
+              DentGrow
             </CopyRight>
           </FooterBottom>
         </FooterMainContent>

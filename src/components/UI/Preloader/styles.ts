@@ -19,15 +19,19 @@ export const Wrapper = styled.div`
 
 export const Inner = styled.div`
   display: flex;
-  gap: 2em;
+  gap: 1em;
   align-items: center;
   padding: 0 2em;
   overflow: hidden;
-  height: 20em;
+  /* Sized for an eight-letter word. The original held four letters at 25em,
+     which filled the width; "DentGrow" is twice as long, so the type scale and
+     the mask height come down proportionally to occupy the same band rather
+     than run off the side of the screen. The animation is untouched. */
+  height: 10em;
 
   img {
-    width: 25em;
-    height: 25em;
+    width: 12em;
+    height: 12em;
   }
 
   div {
@@ -37,21 +41,34 @@ export const Inner = styled.div`
 
     div {
       font-weight: 600;
-      font-size: 25em;
+      font-size: 12em;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    img {
+      width: 9em;
+      height: 9em;
+    }
+
+    div {
+      div {
+        font-size: 9em;
+      }
     }
   }
 
   @media (max-width: 768px) {
     gap: 1rem;
-    height: 13rem;
+    height: 6rem;
     img {
-      width: 7rem;
+      width: 3.5rem;
       height: 100%;
     }
 
     div {
       div {
-        font-size: 6rem;
+        font-size: 3.25rem;
       }
     }
   }

@@ -1,56 +1,55 @@
-
-import ic_banknotes from '../../../../public/svgs/ic_banknotes.svg';
+import ic_identification from '../../../../public/svgs/ic_identification.svg';
 import ic_circle_stack from '../../../../public/svgs/ic_circle_stack.svg';
-import ic_arrows_left_right from '../../../../public/svgs/ic_arrows_right_left.svg';
+import ic_document_duplicate from '../../../../public/svgs/ic_document_duplicate.svg';
 
 // For desktop
-export const desktopHeaderPhrase = ['Your Financial Freedom,', 'Your Way'];
+export const desktopHeaderPhrase = ['Treat with context'];
 export const desktopParagraphPhrase = [
-  'We believe that managing your finances should be effortless and cost-effective.',
-  "That's why we offer you the freedom you deserve.",
+  'Patient history, clinical records, treatments and consent stay connected',
+  'when the patient is in the chair.',
 ];
+// The pull quote renders at 8rem inside 4.5rem of padding, so a line longer
+// than ~17 characters re-wraps at 1024 and leaves an orphan. Kept under that.
 export const desktopBriefNotePhrase = [
-  'Smart investments,',
-  'secure payments, and',
-  'expert guidance, all in',
-  'one place.',
+  'The chart, the',
+  'history and the',
+  'plan, open in',
+  'front of you.',
 ];
 
 // For mobile
-export const mobileHeaderPhrase = ['Your Financial', 'Freedom, Your Way'];
+export const mobileHeaderPhrase = ['Treat with context'];
 export const mobileParagraphPhrase = [
-  'We believe that managing your finances should be',
-  "effortless and cost-effective. That's why we offer",
-  ' you the freedom you deserve.',
+  'Patient history, clinical records, treatments',
+  'and consent stay connected when the patient',
+  'is in the chair.',
 ];
 
 export const mobileBriefNotePhrase = [
-  'Smart',
-  ' investments,',
-  'secure',
-  ' payments,',
-  'and expert',
-  'guidance, all',
-  'in one place.',
+  'The chart,',
+  'the history',
+  'and the plan,',
+  'open in front',
+  'of you.',
 ];
 
 export const edges = [
   {
-    point: 'No minimum balance fees',
+    point: 'The whole history',
     details:
-      'Say goodbye to minimum balance fees. Your account, your balance—no hidden charges',
-    icon: ic_banknotes,
+      'Past visits, treatments and notes sit on the patient record, so nobody has to reconstruct what happened last time',
+    icon: ic_identification,
   },
   {
-    point: 'No monthly fees',
+    point: 'A chart that stays current',
     details:
-      'Bank with us without worrying about monthly fees. Keep more of your money where it belongs—in your account',
+      'Tooth-by-tooth status updates as treatment is planned, started and completed — not after the fact',
     icon: ic_circle_stack,
   },
   {
-    point: 'No bank transfer fees',
+    point: 'Consent where the work is',
     details:
-      'Seamlessly transfer funds without the extra cost. Send and receive money with zero bank transfer fees.',
-    icon: ic_arrows_left_right,
+      'Consent forms are raised and signed against the treatment they belong to, and stay on the record afterwards',
+    icon: ic_document_duplicate,
   },
 ];

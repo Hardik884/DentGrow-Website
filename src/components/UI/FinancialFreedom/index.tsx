@@ -15,8 +15,8 @@ import RevealCover from '@/components/Common/RevealCover';
 import { Div } from '../Featured/styles';
 import { imageVariants } from '../Featured';
 import { useIsMobile } from '../../../../libs/useIsMobile';
-import financial_freedom_banner from '../../../../public/images/financial_freedom_banner.png';
-import freedom_mobile_banner from '../../../../public/images/freedom_mobile_banner.png';
+import clinical_banner from '../../../../public/images/dentgrow/dentgrow-clinical-workflow.png';
+import clinical_banner_mobile from '../../../../public/images/dentgrow/clinical_banner_mobile.png';
 import {
   desktopBriefNotePhrase,
   desktopHeaderPhrase,
@@ -55,9 +55,17 @@ const FinancialFreedom = () => {
             viewport={{ amount: 0.25, once: true }}
           >
             {isMobile ? (
-              <Image src={freedom_mobile_banner} alt="banner_img" fill />
+              <Image
+                src={clinical_banner_mobile}
+                alt="A patient's record and dental chart in DentGrow"
+                fill
+              />
             ) : (
-              <Image src={financial_freedom_banner} alt="banner_img" fill />
+              <Image
+                src={clinical_banner}
+                alt="A patient's record and dental chart in DentGrow"
+                fill
+              />
             )}
           </Div>
         </BannerCtn>

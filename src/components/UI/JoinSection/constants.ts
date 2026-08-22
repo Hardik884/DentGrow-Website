@@ -1,45 +1,61 @@
 import { StaticImageData } from 'next/image';
-import robert_fox from '../../../../public/images/robert_fox.png';
-import cameron_williamson from '../../../../public/images/cameron_williamson.png';
-import esther_howard from '../../../../public/images/esther_howard.png';
+import ic_identification from '../../../../public/svgs/ic_identification.svg';
+import ic_document_duplicate from '../../../../public/svgs/ic_document_duplicate.svg';
+import ic_banknotes from '../../../../public/svgs/ic_banknotes.svg';
 
 export type Props = {
   testimony: string;
   person: string;
+  role: string;
   avatar: StaticImageData;
 };
 
+/**
+ * This section carried customer testimonials on the original layout. DentGrow
+ * has no verified customer quotes to put here, and inventing them is not an
+ * option, so the composition is kept and filled with what the patient-facing
+ * side of the product actually does. Nothing below is a claim about a customer,
+ * an outcome or a result.
+ */
 export const testimonials = [
   {
     testimony:
-      "RAFT has transformed my approach to finance. Their smart investing options have helped me grow my wealth, and their user-friendly platform makes managing my money a breeze. I've never felt more confident about my financial future.",
-    person: 'Robert Fox',
-    avatar: robert_fox,
+      'Patients can see their upcoming appointments, where they are in today’s queue and what happened at past visits — without ringing the clinic to ask.',
+    person: 'Appointments',
+    role: 'In the patient portal',
+    avatar: ic_identification,
   },
   {
     testimony:
-      "I can't express how grateful I am to RAFT. Their wealth management services have been a game-changer for my family's financial security. The expert guidance and personalized strategies have given us peace of mind, knowing that our future is in capable hands.",
-    person: 'Cameron Williamson',
-    avatar: cameron_williamson,
+      'Consent forms are sent, read and signed against the treatment they belong to, so the paperwork is done before the patient is in the chair.',
+    person: 'Consent',
+    role: 'In the patient portal',
+    avatar: ic_document_duplicate,
   },
   {
     testimony:
-      "RAFT's financial planning services have been a lifeline for me. I always struggled with managing my money, but their team crafted a tailored plan that addressed my goals and concerns. It's been a game-changer in achieving my financial dreams",
-    person: 'Esther Howard',
-    avatar: esther_howard,
+      'Bills, payments already made and anything still outstanding are visible to the patient, so money is something both sides can see rather than discuss.',
+    person: 'Billing',
+    role: 'In the patient portal',
+    avatar: ic_banknotes,
   },
   {
     testimony:
-      "I can't express how grateful I am to RAFT. Their wealth management services have been a game-changer for my family's financial security. The expert guidance and personalized strategies have given us peace of mind, knowing that our future is in capable hands.",
-    person: 'Cameron Williamson',
-    avatar: cameron_williamson,
+      'Prescriptions and treatment notes meant for the patient stay on their record, so what they were told is still there a week later.',
+    person: 'Records',
+    role: 'In the patient portal',
+    avatar: ic_identification,
   },
   {
     testimony:
-      "RAFT has transformed my approach to finance. Their smart investing options have helped me grow my wealth, and their user-friendly platform makes managing my money a breeze. I've never felt more confident about my financial future.",
-    person: 'Robert Fox',
-    avatar: robert_fox,
+      'Follow-ups and recalls reach the patient with the visit they relate to, instead of a reminder that means nothing on its own.',
+    person: 'Follow-ups',
+    role: 'In the patient portal',
+    avatar: ic_document_duplicate,
   },
 ];
 
-export const desktopHeaderPhrase = ['Join over 3 million', 'members'];
+export const desktopHeaderPhrase = [
+  'A better experience',
+  'for your patients',
+];

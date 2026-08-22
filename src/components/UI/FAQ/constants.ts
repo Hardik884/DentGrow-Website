@@ -17,25 +17,31 @@ export const animate = {
   }),
 };
 
+/**
+ * Security answers describe what the application enforces today — per-clinic
+ * isolation and role-based access, both enforced in the database rather than
+ * only in the interface. No certification or compliance claim is made here,
+ * because none has been verified.
+ */
 export const faqData: FAQItem[] = [
   {
-    question: 'How do I create an account with RAFT?',
+    question: 'What does DentGrow actually cover?',
     answer:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      'Patients and their history, appointments, the daily queue, the dental chart, treatments and consent, billing and payments, follow-ups and clinic analytics — plus a portal the patient uses themselves. One system rather than a tool for each of those.',
   },
   {
-    question: 'How does RAFT ensure the security of my financial data?',
+    question: 'Who in the clinic uses it?',
     answer:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+      'Dentists, receptionists and clinic owners work in the same system, each with the view their job needs. Patients get their own portal, separate from the clinic-facing side.',
   },
   {
-    question: 'What types of transactions can I perform with RAFT?',
+    question: 'How is our clinic’s data kept separate from other clinics?',
     answer:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+      'Every record belongs to a clinic, and that boundary is enforced in the database itself rather than only in the interface. An account can only reach the records of the clinic it belongs to.',
   },
   {
-    question: 'What benefits does RAFT offer for wealth management?',
+    question: 'Who can see what inside the clinic?',
     answer:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+      'Access is role-based. What a dentist, a receptionist and a patient can each read and change is defined per role and enforced on every request, so a patient portal account cannot reach clinic-wide records.',
   },
 ];

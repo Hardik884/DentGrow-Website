@@ -14,7 +14,17 @@ const MaskText = ({ phrases, tag }: { phrases: string[]; tag: string }) => {
     }),
   };
   const body = useRef(null);
-  const isInView = useInView(body, { once: true, margin: '-10%', amount: 0.4 });
+  // The root margin is deliberately vertical-only. A bare '-10%' also shrinks
+  // the viewport horizontally, which never mattered for a reveal driven by
+  // scrolling but does hide narrow text that sits near the left or right edge
+  // of a full-width row — a one-character stat at the end of the stats row
+  // falls entirely outside the shrunken box and never animates in. Restricting
+  // the inset to the vertical axis leaves the scroll timing exactly as it was.
+  const isInView = useInView(body, {
+    once: true,
+    margin: '-10% 0px',
+    amount: 0.4,
+  });
   return (
     <Body ref={body}>
       {phrases.map((phrase, index) => {

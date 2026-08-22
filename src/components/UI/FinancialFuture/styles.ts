@@ -180,6 +180,9 @@ export const Banner = styled.div`
 
   img {
     object-fit: cover;
+    /* A screenshot, not a photograph: anchor the crop to the top-left so the
+       briefing's health score and first cards stay in frame at every width. */
+    object-position: left top;
   }
 
   @media (max-width: 768px) {

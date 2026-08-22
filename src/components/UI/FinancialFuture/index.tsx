@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
-import future_banner from '../../../../public/images/future_banner.png';
-import future_mobile_banner from '../../../../public/images/future_mobile_banner.png';
+import brain_banner from '../../../../public/images/dentgrow/dentgrow-business-brain.png';
+import brain_banner_mobile from '../../../../public/images/dentgrow/brain_banner_mobile.png';
 import {
   Wrapper,
   Inner,
@@ -68,9 +68,17 @@ const FinancialFuture = () => {
       </Inner>
       <Banner>
         {isMobile ? (
-          <Image src={future_mobile_banner} alt="future_banner" fill />
+          <Image
+            src={brain_banner_mobile}
+            alt="DentGrow's daily briefing, showing what needs attention and what to do"
+            fill
+          />
         ) : (
-          <Image src={future_banner} alt="future_banner" fill />
+          <Image
+            src={brain_banner}
+            alt="DentGrow's daily briefing, showing what needs attention and what to do"
+            fill
+          />
         )}
       </Banner>
     </Wrapper>

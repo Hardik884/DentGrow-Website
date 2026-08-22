@@ -7,12 +7,10 @@ import {
   LogoContainer,
   Nav,
   CallToActions,
-  AbsoluteLinks,
   BurgerMenu,
 } from './styles';
-import raft_logo from '../../../../public/svgs/raft_logo.svg';
 import ic_bars from '../../../../public/svgs/ic_bars.svg';
-import { GetStartedButton } from '@/components';
+import { GetStartedButton, Logo } from '@/components';
 import AnimatedLink from '@/components/Common/AnimatedLink';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -24,7 +22,7 @@ const Header = () => {
     <Wrapper>
       <Inner>
         <LogoContainer>
-          <Image src={raft_logo} alt="raft_logo" priority />
+          <Logo size={29} />
           <BurgerMenu onClick={() => setIsOpen(!isOpen)}>
             <motion.div
               variants={menu}
@@ -39,8 +37,9 @@ const Header = () => {
             <AnimatedLink key={i} title={link.linkTo} />
           ))}
         </Nav>
+        {/* Book a Demo is the only action in the header: this is a marketing
+            site, so it carries no sign-in or account links. */}
         <CallToActions className={isOpen ? 'active' : ''}>
-          <AnimatedLink title="Login" />
           <GetStartedButton padding="0.5rem 0.75rem" />
         </CallToActions>
       </Inner>

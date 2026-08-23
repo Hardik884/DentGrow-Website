@@ -28,7 +28,7 @@ export const Mark = styled.svg.withConfig({
 })<{ $aspect: number }>`
   height: 1em;
   width: ${({ $aspect }) => $aspect}em;
-  fill: var(--emerald);
+  fill: var(--jade);
   flex-shrink: 0;
 `;
 

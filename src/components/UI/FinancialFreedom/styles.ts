@@ -139,7 +139,7 @@ export const Title = styled.div`
 `;
 
 /**
- * The emerald statement between the clinical section and the briefing.
+ * The jade statement between the clinical section and the briefing.
  *
  * It is a transition, not a destination. At 8rem over 8.25rem of padding it
  * ran to roughly a full viewport of solid green with giant type sitting in it,
@@ -149,10 +149,16 @@ export const Title = styled.div`
  */
 export const BriefNote = styled.div`
   padding: 5rem 4.5rem;
-  background: var(--emerald);
+  background: var(--jade);
 
+  /*
+   * White, where the old bright green carried near-black type. Jade is a dark
+   * surface: black on it is 3.14:1, which fails even the large-text threshold
+   * by a hair, while white is 6.45:1. The type is unchanged in every other
+   * respect.
+   */
   p {
-    color: var(--Background, #070606);
+    color: var(--white);
     font-size: 5rem;
     font-weight: 400;
     line-height: 1.15;

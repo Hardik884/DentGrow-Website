@@ -12,21 +12,24 @@ export const Trigger = styled.button`
   align-items: center;
   border: none;
   border-radius: 6.25rem;
-  background: var(--green);
+  background: var(--jade);
   color: var(--white);
   font-family: inherit;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.25s ease, color 0.25s ease;
+  transition: background 0.25s ease;
 
   &:hover {
-    background: var(--emerald);
-    color: var(--Background);
+    background: var(--jade-hover);
+  }
+
+  &:active {
+    background: var(--jade-pressed);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--emerald);
+    outline: 2px solid var(--jade-hover);
     outline-offset: 3px;
   }
 `;

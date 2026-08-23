@@ -166,7 +166,7 @@ const footerAction = `
   }
 
   &:focus-visible {
-    outline: 2px solid var(--emerald);
+    outline: 2px solid var(--jade-hover);
     outline-offset: 3px;
     border-radius: 2px;
   }

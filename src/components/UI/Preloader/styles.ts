@@ -62,7 +62,7 @@ export const Mark = styled.svg.withConfig({
 })<{ $aspect: number }>`
   height: 1em;
   width: ${({ $aspect }) => $aspect}em;
-  fill: var(--emerald);
+  fill: var(--jade);
   flex-shrink: 0;
 `;
 
@@ -86,5 +86,5 @@ export const Letter = styled.span.withConfig({ componentId: 'dg-preloader-letter
 export const SecondOverlay = styled.div`
   ${panel}
   z-index: 9990;
-  background: var(--emerald);
+  background: var(--jade);
 `;

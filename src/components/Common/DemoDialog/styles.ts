@@ -59,7 +59,7 @@ export const CloseButton = styled.button`
   }
 
   &:focus-visible {
-    outline: 2px solid var(--emerald);
+    outline: 2px solid var(--jade-hover);
     outline-offset: 2px;
   }
 `;
@@ -115,13 +115,13 @@ export const Field = styled.div`
   /* The asterisk is decorative: the fields carry the required attribute and
      aria-required, so assistive tech does not depend on reading a glyph. */
   label span {
-    color: var(--emerald);
+    color: var(--jade-legible);
     margin-left: 0.125rem;
   }
 `;
 
 /* "(optional)" is the opposite of a required marker, so it must not share the
-   asterisk's emerald. It recedes instead. */
+   asterisk's jade. It recedes instead. */
 export const Optional = styled.span`
   && {
     color: var(--link-color);
@@ -151,7 +151,7 @@ const control = `
 
   &:focus {
     outline: none;
-    border-color: var(--emerald);
+    border-color: var(--jade-hover);
     background: rgba(255, 255, 255, 0.05);
   }
 
@@ -188,7 +188,7 @@ export const Submit = styled.button`
   gap: 0.5rem;
   border: none;
   border-radius: 6.25rem;
-  background: var(--green);
+  background: var(--jade);
   color: var(--white);
   font-family: inherit;
   font-size: 1rem;
@@ -199,12 +199,15 @@ export const Submit = styled.button`
   transition: background 0.25s ease, opacity 0.25s ease;
 
   &:hover:not(:disabled) {
-    background: var(--emerald);
-    color: var(--Background);
+    background: var(--jade-hover);
+  }
+
+  &:active:not(:disabled) {
+    background: var(--jade-pressed);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--emerald);
+    outline: 2px solid var(--jade-hover);
     outline-offset: 3px;
   }
 
@@ -276,8 +279,8 @@ export const SuccessMark = styled.div`
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: var(--emerald);
-  color: var(--Background);
+  background: var(--jade);
+  color: var(--white);
   font-size: 1.375rem;
   font-weight: 600;
 `;
@@ -299,7 +302,7 @@ export const Done = styled.button`
   }
 
   &:focus-visible {
-    outline: 2px solid var(--emerald);
+    outline: 2px solid var(--jade-hover);
     outline-offset: 3px;
   }
 `;

@@ -8,8 +8,24 @@ export const GlobalStyles = styled.createGlobalStyle`
     --white: #fff;
     --light-gray: #dcdcdc;
     --link-color: #bdbdbd;
-    --green: #2b892e;
-    --emerald: #48d64c;
+    /*
+     * Deep Jade. One accent, four steps.
+     *
+     * --jade is the accent everywhere it is the point: the big statement
+     * sections, the primary button, the brand mark. The other three exist only
+     * where interaction or contrast forces them, so the site stays black,
+     * jade and off-white rather than turning uniformly green.
+     *
+     * --jade-legible is not a fifth brand colour. Jade at --jade on the
+     * near-black ground reaches 3.14:1, which carries a graphic but not a line
+     * of small type; the two places jade IS small type use this instead.
+     * Contrast for every pairing is recorded in the commit.
+     */
+    --jade: #176b50; /* accent — white text on it reaches 6.45:1 */
+    --jade-hover: #1d8060; /* hover, and focus rings that must clear 3:1 */
+    --jade-pressed: #12543e; /* pressed */
+    --jade-legible: #229870; /* jade as small text on black — 5.58:1 */
+    --jade-tint: #e4f0eb; /* the one inverted surface: the mobile menu's button */
   }
 
   * {

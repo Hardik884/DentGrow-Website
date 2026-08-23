@@ -15,7 +15,7 @@ export const Anchor = styled(motion.a)`
   text-decoration: none;
 
   &:focus-visible {
-    outline: 2px solid var(--emerald);
+    outline: 2px solid var(--jade-hover);
     outline-offset: 4px;
     border-radius: 2px;
   }
@@ -34,8 +34,10 @@ export const Span = styled(motion.span)`
   font-size: 1rem;
   font-weight: 400;
 
+  /* The mobile panel behind these is jade, so the links are white on it
+     rather than the near-black they were on the old bright green. */
   @media (max-width: 768px) {
-    color: var(--Background);
+    color: var(--white);
     font-size: 1.5rem;
     font-weight: 500;
   }

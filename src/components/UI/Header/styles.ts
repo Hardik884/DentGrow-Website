@@ -39,7 +39,7 @@ export const BurgerMenu = styled.div`
 
     div {
       position: absolute;
-      background: var(--emerald);
+      background: var(--jade);
       width: '250px';
       height: '300px';
       border-radius: 25px;
@@ -124,6 +124,35 @@ export const CallToActions = styled.div`
     opacity: 0;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transition-delay: 0.5s;
+
+    /*
+     * Inverted, because on this breakpoint the button sits ON the jade menu
+     * panel. A jade pill on a jade panel is 1:1 — the shape disappears and only
+     * the label survives. The old palette got away with it on 2.3:1 between its
+     * two greens; Deep Jade has no two steps far enough apart to carry a filled
+     * button on a filled panel, so the button takes the panel's inverse here.
+     * Shape, size, padding, radius and transition are untouched, and this is
+     * scoped to the header: the hero and footer buttons sit on black at every
+     * width and stay jade.
+     */
+    button {
+      background: var(--white);
+      color: var(--jade);
+    }
+
+    button:hover {
+      background: var(--jade-tint);
+      color: var(--jade-pressed);
+    }
+
+    button:active {
+      background: var(--jade-tint);
+      color: var(--jade-pressed);
+    }
+
+    button:focus-visible {
+      outline-color: var(--white);
+    }
 
     &.active {
       opacity: 1;

@@ -34,12 +34,12 @@ export const Pill = styled.a`
   transition: border-color 0.3s ease, background 0.3s ease;
 
   &:hover {
-    border-color: var(--emerald);
+    border-color: var(--jade-hover);
     background: rgba(255, 255, 255, 0.22);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--emerald);
+    outline: 2px solid var(--jade-hover);
     outline-offset: 3px;
   }
 

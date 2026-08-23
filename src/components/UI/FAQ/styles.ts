@@ -75,7 +75,7 @@ export const Question = styled(motion.button)<{ $open: boolean }>`
   }
 
   &:focus-visible {
-    outline: 2px solid var(--emerald);
+    outline: 2px solid var(--jade-hover);
     outline-offset: 6px;
     border-radius: 2px;
   }

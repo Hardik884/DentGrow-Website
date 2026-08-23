@@ -7,7 +7,8 @@ application (see DENTGROW_SCREENSHOTS.md), resampled into the slot it occupies s
 the layout is untouched. This file is the provenance of those images: the boxes
 below record exactly which region of which screen each one came from.
 
-Source frames are 2880x1800 (1440x900 at deviceScaleFactor 2).
+Source frames are 2880x1800 — captured at a 1920x1200 viewport and written down
+to 1440x900 at 2x. All boxes are in source pixels.
 
 Requires Pillow. Run from anywhere:
 
@@ -32,8 +33,7 @@ BRAIN = os.path.join(SRC, "dentgrow-business-brain.png")
 
 def panel(src, box, size, name, radius=14, transparent=True):
     """A cropped region of a real screen, resampled into an illustration slot."""
-    im = Image.open(src).convert("RGB")
-    im = im.crop(box).resize(size, Image.LANCZOS)
+    im = Image.open(src).convert("RGB").crop(box).resize(size, Image.LANCZOS)
 
     if not transparent:
         im.save(os.path.join(OUT, name), optimize=True)
@@ -51,8 +51,7 @@ def panel(src, box, size, name, radius=14, transparent=True):
     ImageDraw.Draw(border).rounded_rectangle(
         [0, 0, size[0] - 1, size[1] - 1], radius, outline=(255, 255, 255, 46), width=1
     )
-    out = Image.alpha_composite(out, border)
-    out.save(os.path.join(OUT, name), optimize=True)
+    Image.alpha_composite(out, border).save(os.path.join(OUT, name), optimize=True)
     print(name, out.size)
 
 
@@ -64,31 +63,39 @@ def panel(src, box, size, name, radius=14, transparent=True):
 
 # ── Mobile banners: portrait crops of the same frames ────────────────────────
 # Written at the crop's native resolution rather than at the CSS slot size. The
-# slot uses `fill`, so intrinsic pixels do not affect layout at all — but the
-# banner is still ~690px wide at the 768px breakpoint, and a 342px-wide file
-# would be upscaled to twice its size there and go visibly soft. Opaque, not
-# rounded: the container already rounds the corners, and a rounded PNG under a
-# `cover` scale would round twice at the wrong radius.
-panel(WORKSPACE, (497, 150, 1656, 1438), (1026, 1140), "workspace_banner_mobile.png", transparent=False)
-panel(CLINICAL, (497, 213, 1440, 1260), (943, 1047), "clinical_banner_mobile.png", transparent=False)
-panel(BRAIN, (497, 213, 1656, 1699), (1159, 1486), "brain_banner_mobile.png", transparent=False)
+# slot uses `fill`, so intrinsic pixels do not affect layout — but the banner is
+# still ~690px wide at the 768px breakpoint, and a 342px-wide file would be
+# upscaled there and go visibly soft. Opaque and unrounded: the container
+# already rounds the corners.
+# Right edge sits on the KPI grid's second column boundary rather than through
+# a card, so the narrow crop ends on an edge the layout actually has.
+panel(WORKSPACE, (374, 150, 1290, 1168), (916, 1018), "workspace_banner_mobile.png", transparent=False)
+panel(CLINICAL, (374, 130, 1620, 1514), (1246, 1384), "clinical_banner_mobile.png", transparent=False)
+panel(BRAIN, (382, 150, 1289, 1313), (907, 1163), "brain_banner_mobile.png", transparent=False)
 
 # ── Offer-card illustrations ─────────────────────────────────────────────────
 # Live queue widget — the front desk's view of who is in the building.
-panel(WORKSPACE, (2045, 943, 2844, 1364), (448, 236), "offer_queue.png")
+panel(WORKSPACE, (1600, 695, 2226, 1025), (448, 236), "offer_queue.png")
 # The patient record: who they are, when they were last seen, what they owe.
-panel(CLINICAL, (497, 213, 1440, 739), (409, 228), "offer_patient.png")
-# The dental chart's upper and lower arch.
-panel(CLINICAL, (526, 1253, 1742, 1750), (362, 148), "offer_chart.png")
+panel(CLINICAL, (374, 130, 1620, 825), (409, 228), "offer_patient.png")
+# The dental chart's arches and its status legend.
+panel(CLINICAL, (950, 900, 2200, 1411), (362, 148), "offer_chart.png")
 # The day's takings, as the dashboard reports them.
-panel(WORKSPACE, (1094, 612, 1656, 976), (293, 190), "offer_revenue.png")
+panel(WORKSPACE, (843, 438, 1288, 727), (293, 190), "offer_revenue.png")
 
 # ── Intro section's three fanned panels ──────────────────────────────────────
-# Centre (portrait): the navigation itself — every part of the clinic in one rail.
-panel(WORKSPACE, (0, 0, 430, 680), (222, 351), "panel_centre.png", radius=12)
+# Centre (portrait): the navigation rail — every part of the clinic in one list.
+panel(WORKSPACE, (0, 0, 360, 569), (222, 351), "panel_centre.png", radius=12)
 # Left (landscape): today's numbers.
-panel(WORKSPACE, (511, 202, 1656, 929), (350, 222), "panel_left.png", radius=12)
+panel(WORKSPACE, (384, 130, 1286, 702), (350, 222), "panel_left.png", radius=12)
 # Right (landscape): today's list of patients.
-panel(WORKSPACE, (511, 943, 2030, 1779), (711, 391), "panel_right.png", radius=12)
+panel(WORKSPACE, (384, 700, 1588, 1362), (711, 391), "panel_right.png", radius=12)
+
+# ── Business Brain's two columns, for the two cards that describe them ───────
+# Same crop geometry for both so the pair sits evenly in the section.
+# Left: the problems, worst first, each with its number.
+panel(BRAIN, (368, 445, 1292, 1138), (480, 360), "brain_attention.png", radius=12)
+# Right: the matching step for each one, with the button that starts it.
+panel(BRAIN, (1298, 445, 2222, 1138), (480, 360), "brain_action.png", radius=12)
 
 print("done")

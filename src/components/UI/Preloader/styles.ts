@@ -1,87 +1,90 @@
 'use client';
 import { styled } from 'styled-components';
 
-export const Wrapper = styled.div`
-  background: var(--Background);
-  color: var(--white);
+/**
+ * Both panels are pinned to the viewport and centre their contents. `100dvh`
+ * keeps the lockup optically centred on mobile, where a `100vh` panel sits
+ * partly behind the browser's own chrome; `100vh` stays as the fallback.
+ */
+const panel = `
   position: fixed;
-  height: 100vh;
-  width: 100vw;
-  z-index: 9999;
   top: 0;
   left: 0;
-  bottom: 0;
-  right: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+`;
+
+export const Wrapper = styled.div`
+  ${panel}
+  z-index: 9999;
+  background: var(--Background);
+  color: var(--white);
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Inner = styled.div`
   display: flex;
-  gap: 1em;
   align-items: center;
-  padding: 0 2em;
-  overflow: hidden;
-  /* Sized for an eight-letter word. The original held four letters at 25em,
-     which filled the width; "DentGrow" is twice as long, so the type scale and
-     the mask height come down proportionally to occupy the same band rather
-     than run off the side of the screen. The animation is untouched. */
-  height: 10em;
+  justify-content: center;
+`;
 
-  img {
-    width: 12em;
-    height: 12em;
-  }
+/**
+ * The lockup's font-size is the mark's height; everything inside is in `em`,
+ * so the whole thing scales from one number at each breakpoint.
+ */
+export const Lockup = styled.div.withConfig({ componentId: 'dg-preloader-lockup' })`
+  display: flex;
+  align-items: center;
+  gap: 0.32em;
+  line-height: 1;
+  font-size: 88px;
 
-  div {
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-
-    div {
-      font-weight: 600;
-      font-size: 12em;
-    }
-  }
-
-  @media (max-width: 1200px) {
-    img {
-      width: 9em;
-      height: 9em;
-    }
-
-    div {
-      div {
-        font-size: 9em;
-      }
-    }
+  @media (max-width: 1024px) {
+    font-size: 72px;
   }
 
   @media (max-width: 768px) {
-    gap: 1rem;
-    height: 6rem;
-    img {
-      width: 3.5rem;
-      height: 100%;
-    }
+    font-size: 48px;
+  }
 
-    div {
-      div {
-        font-size: 3.25rem;
-      }
-    }
+  @media (max-width: 380px) {
+    font-size: 40px;
   }
 `;
 
+/* Pinned for the same reason as the header lockup's mark — see
+   Common/Logo/styles.ts. */
+export const Mark = styled.svg.withConfig({
+  componentId: 'dg-preloader-mark',
+})<{ $aspect: number }>`
+  height: 1em;
+  width: ${({ $aspect }) => $aspect}em;
+  fill: var(--emerald);
+  flex-shrink: 0;
+`;
+
+/* The mask the letters rise out of. Its padding gives descenders room without
+   letting a letter's travel show above the cap line. */
+export const WordMask = styled.div.withConfig({ componentId: 'dg-preloader-mask' })`
+  display: flex;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+`;
+
+export const Letter = styled.span.withConfig({ componentId: 'dg-preloader-letter' })`
+  display: block;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  white-space: pre;
+`;
+
 export const SecondOverlay = styled.div`
-  background: var(--emerald);
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
+  ${panel}
   z-index: 9990;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  background: var(--emerald);
 `;

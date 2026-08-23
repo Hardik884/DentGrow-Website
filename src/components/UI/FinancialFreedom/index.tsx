@@ -17,6 +17,7 @@ import { imageVariants } from '../Featured';
 import { useIsMobile } from '../../../../libs/useIsMobile';
 import clinical_banner from '../../../../public/images/dentgrow/dentgrow-clinical-workflow.png';
 import clinical_banner_mobile from '../../../../public/images/dentgrow/clinical_banner_mobile.png';
+import { SECTION_IDS } from '../../../../libs/useScrollToSection';
 import {
   desktopBriefNotePhrase,
   desktopHeaderPhrase,
@@ -31,7 +32,7 @@ const FinancialFreedom = () => {
   const isMobile = useIsMobile();
 
   return (
-    <Wrapper>
+    <Wrapper id={SECTION_IDS.solutions}>
       <Inner>
         <Header>
           {isMobile ? (

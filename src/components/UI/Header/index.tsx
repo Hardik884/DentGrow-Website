@@ -34,7 +34,14 @@ const Header = () => {
         </LogoContainer>
         <Nav className={isOpen ? 'active' : ''}>
           {links.map((link, i) => (
-            <AnimatedLink key={i} title={link.linkTo} />
+            <AnimatedLink
+              key={i}
+              title={link.linkTo}
+              href={link.href}
+              /* Tapping a link on mobile navigates, so the panel it was in
+                 should not still be sitting over the section it went to. */
+              onNavigate={() => setIsOpen(false)}
+            />
           ))}
         </Nav>
         {/* Book a Demo is the only action in the header: this is a marketing

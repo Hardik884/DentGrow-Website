@@ -13,6 +13,7 @@ import Image from 'next/image';
 import ic_chevron_down from '../../../../public/svgs/ic_chevron_down.svg';
 import { MaskText } from '@/components';
 import { useIsMobile } from '../../../../libs/useIsMobile';
+import { SECTION_IDS } from '../../../../libs/useScrollToSection';
 import {
   animate,
   desktopHeaderPhrase,
@@ -37,7 +38,7 @@ const FAQ = () => {
   const isMobile = useIsMobile();
 
   return (
-    <Wrapper>
+    <Wrapper id={SECTION_IDS.security}>
       <Inner>
         {isMobile ? (
           <MaskText phrases={mobileHeaderPhrase} tag="h1" />

@@ -52,7 +52,7 @@ const FinancialFuture = () => {
                 <MaskText phrases={new Array(info.details)} tag="p" />
               </TextCtn>
               <SVGCtn>
-                <Image src={info.icon} alt="icon" />
+                <Image src={info.visual} alt={info.alt} />
               </SVGCtn>
             </Card>
           ))}

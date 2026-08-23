@@ -106,15 +106,27 @@ export const SVGCtn = styled.div`
   height: 24.55rem;
   display: grid;
   place-items: center;
+  padding: 0 1.5rem;
+
+  /* Holds a crop of the real briefing now, not a 24px glyph. It floats on the
+     grid at its own aspect and never grows past the slot, so the card's height
+     is unchanged. */
+  img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 21rem;
+    border-radius: 0.5rem;
+  }
 
   @media (max-width: 768px) {
     height: 15.28219rem;
     background-position: center center;
     background-size: contain;
+    padding: 0 1rem;
 
     img {
-      width: 7.5rem;
-      height: 7.5rem;
+      max-height: 12rem;
     }
   }
 `;
@@ -173,22 +185,34 @@ export const Stat = styled.div`
 //   text-transform: uppercase;
 // `;
 
+/**
+ * The briefing screenshot.
+ *
+ * It used to run the full width of the viewport at 45rem tall, which read as
+ * the application taking the page over rather than as another product shot.
+ * These are the dashboard banner's dimensions instead — same 90% width, same
+ * 1440px ceiling, same 35rem height and same corner radius — so the two
+ * screenshots carry the same weight on the page.
+ */
 export const Banner = styled.div`
-  height: 45rem;
-  width: 100%;
   position: relative;
+  width: 90%;
+  max-width: 1440px;
+  height: 35rem;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 0.75rem;
 
   img {
     object-fit: cover;
     /* A screenshot, not a photograph: anchor the crop to the top-left so the
        briefing's health score and first cards stay in frame at every width. */
     object-position: left top;
+    border-radius: 0.75rem;
   }
 
   @media (max-width: 768px) {
-    height: 31.25rem;
-    img {
-      object-fit: contain;
-    }
+    height: 23.75rem;
+    border-radius: 0.5rem;
   }
 `;

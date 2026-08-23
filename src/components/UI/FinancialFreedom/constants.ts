@@ -8,13 +8,11 @@ export const desktopParagraphPhrase = [
   'Patient history, clinical records, treatments and consent stay connected',
   'when the patient is in the chair.',
 ];
-// The pull quote renders at 8rem inside 4.5rem of padding, so a line longer
-// than ~17 characters re-wraps at 1024 and leaves an orphan. Kept under that.
+// Two lines at 5rem, sized so neither re-wraps down to 1024. Fewer, shorter
+// lines are what keep the emerald band a beat rather than a full screen.
 export const desktopBriefNotePhrase = [
-  'The chart, the',
-  'history and the',
-  'plan, open in',
-  'front of you.',
+  'The chart, the history and the plan,',
+  'open in front of you.',
 ];
 
 // For mobile
@@ -26,11 +24,9 @@ export const mobileParagraphPhrase = [
 ];
 
 export const mobileBriefNotePhrase = [
-  'The chart,',
-  'the history',
-  'and the plan,',
-  'open in front',
-  'of you.',
+  'The chart, the history',
+  'and the plan, open',
+  'in front of you.',
 ];
 
 export const edges = [

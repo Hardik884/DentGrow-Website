@@ -152,6 +152,33 @@ export const LinksContainer = styled.ul`
   }
 `;
 
+/* The Product column's entries are real anchors now, and Contact opens the
+   demo dialog. Both inherit the list's type and its underline-on-hover, so the
+   column looks exactly as it did. */
+const footerAction = `
+  color: inherit;
+  font: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+`;
+
+export const FooterLink = styled.a`
+  ${footerAction}
+`;
+
+export const FooterButton = styled.button`
+  ${footerAction}
+`;
+
 export const FooterBottom = styled.div`
   display: flex;
   align-items: center;

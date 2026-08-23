@@ -14,6 +14,7 @@ import {
 import RevealCover from '@/components/Common/RevealCover';
 import { useIsMobile } from '../../../../libs/useIsMobile';
 import { connectedAreas } from './constants';
+import { SECTION_IDS } from '../../../../libs/useScrollToSection';
 export const imageVariants = {
   hidden: {
     scale: 1.6,
@@ -31,7 +32,7 @@ export const imageVariants = {
 const Featured = () => {
   const isMobile = useIsMobile();
   return (
-    <Wrapper>
+    <Wrapper id={SECTION_IDS.product}>
       <Inner>
         <ImageContainer>
           <RevealCover />

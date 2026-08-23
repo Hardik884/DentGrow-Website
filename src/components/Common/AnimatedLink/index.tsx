@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
-import { Div, Word, Span, AbsoluteContainer } from './styles';
+import { Anchor, Word, Span, AbsoluteContainer } from './styles';
+import { useScrollToSection } from '../../../../libs/useScrollToSection';
 
 type AnimationProps = {
   rest: {
@@ -57,26 +58,50 @@ const letterAnimationTwo = {
   },
 };
 
-const AnimatedLink = ({ title }: { title: string }) => {
+/**
+ * A navigation link with the two-layer letter roll on hover.
+ *
+ * It renders a real anchor: the hash is a working destination, so the link is
+ * keyboard-focusable, opens in a new tab on middle-click, and still lands on
+ * the right section if the scroll handler never runs.
+ */
+const AnimatedLink = ({
+  title,
+  href,
+  onNavigate,
+}: {
+  title: string;
+  href: string;
+  onNavigate?: () => void;
+}) => {
   const [isHovered, setIsHovered] = useState(false);
+  const scrollToSection = useScrollToSection();
+
   return (
-    <Div
+    <Anchor
+      href={href}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
+      onClick={(event) => {
+        scrollToSection(event, href);
+        onNavigate?.();
+      }}
     >
       <AnimatedWord
         title={title}
         animations={letterAnimation}
         isHovered={isHovered}
       />
-      <AbsoluteContainer>
+      <AbsoluteContainer aria-hidden="true">
         <AnimatedWord
           title={title}
           animations={letterAnimationTwo}
           isHovered={isHovered}
         />
       </AbsoluteContainer>
-    </Div>
+    </Anchor>
   );
 };
 

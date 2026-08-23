@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DentGrow — marketing site
 
-## Getting Started
-
-First, run the development server:
+The public site for DentGrow, a dental practice management system. Next.js App
+Router, styled-components, GSAP and Lenis.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Demo requests
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The site's only call to action is **Book a Demo**. Every instance of that button
+opens one dialog, which posts to `POST /api/demo-request`.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This site has no database. The route handler validates the request and forwards
+it to a webhook, so a submission always ends up somewhere without the site
+needing storage of its own.
 
-## Learn More
+### Required configuration
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `DEMO_WEBHOOK_URL` | yes | The endpoint each validated demo request is POSTed to. |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Set it in `.env.local` for development, and in the hosting provider's
+environment for a deployment:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+DEMO_WEBHOOK_URL="https://hooks.slack.com/services/…"
+```
 
-## Deploy on Vercel
+Anything that accepts a JSON `POST` works — a Slack incoming webhook, a
+Zapier or Make catch hook, an n8n workflow, a CRM intake URL. The body is:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```json
+{
+  "source": "dentgrow-marketing-site",
+  "submittedAt": "2026-08-23T02:12:30.751Z",
+  "name": "Dr. Ananya Mehta",
+  "mobile": "+91 80 4718 2200",
+  "email": "ananya@example.com",
+  "message": "Three chairs, two dentists.",
+  "text": "New DentGrow demo request\nName: …"
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`text` is included so the same webhook renders as a readable message in Slack
+while remaining ordinary JSON for anything else.
+
+**If `DEMO_WEBHOOK_URL` is not set the endpoint returns 503 and the form shows
+its error state.** That is deliberate: a form that thanks someone while dropping
+their details is worse than one that admits it is not wired up. The success
+state appears only when the webhook has accepted the request.
+
+Responses: `200` delivered · `422` validation failed (with per-field messages) ·
+`400` malformed JSON · `502` the webhook rejected or timed out · `503` not
+configured.
+
+## Product imagery
+
+Every product visual is a screenshot of the real DentGrow application, captured
+with Playwright against a local development instance. See
+[DENTGROW_SCREENSHOTS.md](DENTGROW_SCREENSHOTS.md) for what was captured and
+where each image is used, and `scripts/build-dentgrow-assets.py` for the crops
+derived from them.

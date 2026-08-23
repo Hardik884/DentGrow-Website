@@ -1,3 +1,5 @@
+import { SECTION_IDS } from '../../../../libs/useScrollToSection';
+
 export const menu = {
   open: {
     width: '250px',
@@ -20,21 +22,22 @@ export const menu = {
     },
   },
 };
+/**
+ * The navigation. Each entry points at a section that exists on this page, so
+ * every link has a real destination — there is no Pricing page to send anyone
+ * to, so there is no Pricing link.
+ */
 export const links = [
   {
-    url: '/',
+    href: `#${SECTION_IDS.product}`,
     linkTo: 'Product',
   },
   {
-    url: '/',
+    href: `#${SECTION_IDS.solutions}`,
     linkTo: 'Solutions',
   },
   {
-    url: '/',
+    href: `#${SECTION_IDS.security}`,
     linkTo: 'Security',
-  },
-  {
-    url: '/',
-    linkTo: 'Pricing',
   },
 ];

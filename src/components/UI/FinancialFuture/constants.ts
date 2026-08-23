@@ -1,18 +1,26 @@
-import ic_circle_stack from '../../../../public/svgs/ic_circle_stack.svg';
-import ic_arrows_right_left from '../../../../public/svgs/ic_arrows_right_left.svg';
+import brain_attention from '../../../../public/images/dentgrow/brain_attention.png';
+import brain_action from '../../../../public/images/dentgrow/brain_action.png';
 
+/**
+ * Both cards show the half of the real briefing that their copy describes: the
+ * left card the "Needs attention" column, the right card the "What to do"
+ * column beside it. They are two crops of the same captured screen, so the
+ * pairing a reader sees on the page is the pairing the product actually makes.
+ */
 export const cardsInfo = [
   {
     title: 'See what needs attention',
     details:
       'DentGrow reads the day’s activity and surfaces what is actually going wrong — worst first, in plain language rather than a wall of charts.',
-    icon: ic_circle_stack,
+    visual: brain_attention,
+    alt: "DentGrow's Needs attention list: unused chair time, and patients with planned treatment who have not booked their next visit",
   },
   {
     title: 'Know what to do next',
     details:
       'Every signal comes with the step that answers it and the button that starts it, so a problem the clinic can see is a problem the clinic can act on.',
-    icon: ic_arrows_right_left,
+    visual: brain_action,
+    alt: "DentGrow's What to do list, pairing each finding with a step and a Book Appointment button",
   },
 ];
 

@@ -116,22 +116,40 @@ export const Title = styled.div`
   }
 `;
 
+/**
+ * The emerald statement between the clinical section and the briefing.
+ *
+ * It is a transition, not a destination. At 8rem over 8.25rem of padding it
+ * ran to roughly a full viewport of solid green with giant type sitting in it,
+ * which reads as a page that has stopped loading rather than as a beat between
+ * two sections. Same colour, same statement, same full-bleed treatment — about
+ * 40% of the height, so it passes at speed instead of parking.
+ */
 export const BriefNote = styled.div`
-  max-height: 54.75rem;
-  padding: 8.25rem 4.5rem;
+  padding: 5rem 4.5rem;
   background: var(--emerald);
 
   p {
     color: var(--Background, #070606);
-    font-size: 8rem;
+    font-size: 5rem;
     font-weight: 400;
+    line-height: 1.15;
     max-width: 1440px;
   }
 
-  @media (max-width: 768px) {
-    padding: 2rem 1.5rem;
+  @media (max-width: 1024px) {
+    padding: 4rem 3rem;
+
     p {
-      font-size: 3.75rem;
+      font-size: 3.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 1.5rem;
+
+    p {
+      font-size: 2.25rem;
     }
   }
 `;

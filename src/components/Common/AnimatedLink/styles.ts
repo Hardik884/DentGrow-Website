@@ -2,12 +2,23 @@
 import { motion } from 'framer-motion';
 import { styled } from 'styled-components';
 
-export const Div = styled(motion.div)`
+/**
+ * The link itself. An anchor rather than a div: these now point at real
+ * sections, so they must be focusable and behave like links.
+ */
+export const Anchor = styled(motion.a)`
   position: relative;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  text-decoration: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
 `;
 
 export const Word = styled(motion.span)`

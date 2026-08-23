@@ -14,6 +14,9 @@ import {
   LeftImage,
   MiddleImage,
   RightImage,
+  MobilePanels,
+  PrimaryPanel,
+  SecondaryPanel,
 } from './styles';
 import { MaskText } from '@/components';
 import { useIsMobile } from '../../../../libs/useIsMobile';
@@ -48,24 +51,47 @@ const IntroSection = () => {
             )}
           </HeaderMainText>
         </Header>
-        <CardsContainer>
-          <LeftImage
-            className={isHovered ? 'active' : ''}
-            src={panel_left}
-            alt="Today's numbers in DentGrow"
-          />
-          <MiddleImage
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            src={panel_centre}
-            alt="DentGrow's navigation"
-          />
-          <RightImage
-            className={isHovered ? 'active' : ''}
-            src={panel_right}
-            alt="Today's appointments in DentGrow"
-          />
-        </CardsContainer>
+        {/*
+          Two compositions of the same three panels, one per layout.
+
+          The fan below is driven by hovering the centre card, which a phone
+          cannot do, so the breakpoint picks between them rather than trying to
+          reflow one into the other — the desktop markup is untouched, and the
+          phone gets a composition built for it: the day's appointments leading,
+          the figures and the workflow as a compact pair underneath.
+        */}
+        {isMobile ? (
+          <MobilePanels>
+            <PrimaryPanel>
+              <Image src={panel_right} alt="Today's appointments in DentGrow" />
+            </PrimaryPanel>
+            <SecondaryPanel>
+              <Image src={panel_left} alt="Today's numbers in DentGrow" />
+            </SecondaryPanel>
+            <SecondaryPanel>
+              <Image src={panel_centre} alt="DentGrow's navigation" />
+            </SecondaryPanel>
+          </MobilePanels>
+        ) : (
+          <CardsContainer>
+            <LeftImage
+              className={isHovered ? 'active' : ''}
+              src={panel_left}
+              alt="Today's numbers in DentGrow"
+            />
+            <MiddleImage
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              src={panel_centre}
+              alt="DentGrow's navigation"
+            />
+            <RightImage
+              className={isHovered ? 'active' : ''}
+              src={panel_right}
+              alt="Today's appointments in DentGrow"
+            />
+          </CardsContainer>
+        )}
         <Edges>
           {edges.map((edge, i) => (
             <Edge key={i}>

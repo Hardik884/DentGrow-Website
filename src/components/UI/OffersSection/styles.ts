@@ -80,7 +80,18 @@ export const ImageCtn = styled.div`
   }
 
   @media (max-width: 768px) {
+    /*
+     * Centred in the card, at its own aspect.
+     *
+     * The row layout offsets and stretches individual shots to build its
+     * composition; on a phone each card is on its own, so every screenshot is
+     * framed the same way — full card width, the shot centred inside it, and
+     * nothing reaching past an edge to be clipped.
+     */
     margin: 0.32rem auto 0;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
 
     &::after {
       height: 1.75rem;
@@ -88,6 +99,8 @@ export const ImageCtn = styled.div`
 
     img {
       width: 90%;
+      max-width: 90%;
+      height: auto;
       margin: 0 auto;
       object-fit: contain;
     }
@@ -131,67 +144,70 @@ export const Offers = styled.div`
 
   &:last-child {
     margin-top: 2rem;
+  }
 
-    div:first-child {
-      flex: 1;
-
-      ${ImageCtn} {
-        margin-top: 5.7rem;
-        flex: 2;
-      }
-
-      ${TextCtn} {
-        height: 1em;
+  /*
+   * The second row's composition: a narrow card and a wide one, each with its
+   * screenshot pushed down the card and its copy sitting in the space that
+   * leaves. The copy gets that slot from \`flex\` — a zero basis the row's free
+   * space then grows back — which is only meaningful while this is a row.
+   * Scoped above the phone breakpoint so the stacked layout below can size
+   * every card to its own content instead.
+   */
+  @media (min-width: 769px) {
+    &:last-child {
+      div:first-child {
         flex: 1;
+
+        ${ImageCtn} {
+          margin-top: 5.7rem;
+          flex: 2;
+        }
+
+        ${TextCtn} {
+          height: 1em;
+          flex: 1;
+        }
       }
-    }
 
-    div:last-child {
-      flex: 2;
-
-      ${ImageCtn} {
-        margin-top: 5.7rem;
+      div:last-child {
         flex: 2;
-        margin-left: auto;
-      }
 
-      ${TextCtn} {
-        height: 1em;
-        flex: 1;
+        ${ImageCtn} {
+          margin-top: 5.7rem;
+          flex: 2;
+          margin-left: auto;
+        }
+
+        ${TextCtn} {
+          height: 1em;
+          flex: 1;
+        }
       }
     }
   }
 
   @media (max-width: 768px) {
     flex-direction: column;
+    /* Cards take the column's full width rather than shrinking to fit their
+       own contents, so all four are framed identically. */
+    align-items: stretch;
 
-    &:last-child {
-      div:first-child {
-        flex: 1;
-
-        ${ImageCtn} {
-          margin-top: 4.78rem;
-          flex: 1;
-        }
-
-        ${TextCtn} {
-          margin-top: 4rem;
-        }
-      }
-
-      div:last-child {
-        flex: 1;
-
-        ${ImageCtn} {
-          margin-top: 5.7rem;
-          flex: 1;
-          margin-left: auto;
-        }
-
-        ${TextCtn} {
-          margin-top: 2rem;
-        }
-      }
+    /*
+     * Everything in the column sizes to what is inside it.
+     *
+     * This is what the missing copy was: stacked, the column has no free space
+     * to hand back, so a \`flex: 1\` item is left on a zero basis. Chrome floors
+     * it at min-content and it survives; other engines keep the basis, and the
+     * heading and paragraph under each screenshot collapsed to nothing inside
+     * the card's \`overflow: hidden\`. Neither the image nor the copy is a flex
+     * slot here, so neither is sized like one.
+     */
+    ${ImageCtn},
+    ${TextCtn} {
+      flex: 0 0 auto;
+      height: auto;
+      margin-top: 0;
     }
   }
 `;
@@ -212,9 +228,31 @@ export const OfferCard = styled.div`
   &:nth-child(2) {
     flex: 1;
 
-    ${ImageCtn} {
-      margin-left: 2.5rem;
-      width: 100%;
+    /*
+     * The narrow card's screenshot is deliberately shifted right and run past
+     * the card's edge on the wide layout — the crop IS the composition there.
+     * On a phone the card has no wide neighbour to lean against, so the same
+     * offset only knocks the shot off centre and clips its right side, which
+     * is what the patient record was doing. Kept for the row, dropped for the
+     * column.
+     */
+    @media (min-width: 769px) {
+      ${ImageCtn} {
+        margin-left: 2.5rem;
+        width: 100%;
+      }
     }
+  }
+
+  @media (max-width: 768px) {
+    /*
+     * Height comes from the contents, not from the row's 31.25rem slot.
+     *
+     * Stacked, a card's screenshot and copy no longer share a fixed height
+     * between them, so pinning the card to the row's height only decided how
+     * much of the copy \`overflow: hidden\` would cut off.
+     */
+    height: auto;
+    padding-bottom: 0.5rem;
   }
 `;

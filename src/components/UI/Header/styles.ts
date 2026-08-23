@@ -1,6 +1,11 @@
 'use client';
 import Link from 'next/link';
 import { styled } from 'styled-components';
+import {
+  MENU_PANEL_WIDTH,
+  MENU_PILL_HEIGHT,
+  MENU_PILL_WIDTH,
+} from './constants';
 
 export const Wrapper = styled.section`
   padding: 1rem 0;
@@ -15,6 +20,11 @@ export const Inner = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* The containing block for the menu panel's contents below the breakpoint.
+     The links and the button used to be positioned against the viewport, so
+     where they landed inside the panel depended on how wide the phone was;
+     against this row they keep the same place in the panel at every width. */
+  position: relative;
   width: 90%;
   max-width: 1440px;
   margin: 0 auto;
@@ -29,25 +39,41 @@ export const LogoContainer = styled.div`
   }
 `;
 
+/**
+ * The menu button, and the jade shape behind it.
+ *
+ * The button's box IS the closed pill: 3.4375rem x 2.5rem, the size the closed
+ * variant animates to, with the icon centred in it by flex. It used to be
+ * 0.5rem of padding around an inline image, which made the box 41x46 against a
+ * 55x40 pill hung off its corner — the icon sat 3px right of the pill's centre
+ * and the pill's right edge overhung the page gutter. Same pill, same size,
+ * same radius; it is now concentric with what it sits behind.
+ */
 export const BurgerMenu = styled.div`
   display: none;
   position: relative;
 
   @media (max-width: 768px) {
-    display: block;
-    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: ${MENU_PILL_WIDTH}px;
+    height: ${MENU_PILL_HEIGHT}px;
+    flex-shrink: 0;
+    padding: 0;
+    cursor: pointer;
 
     div {
       position: absolute;
       background: var(--jade);
-      width: '250px';
-      height: '300px';
       border-radius: 25px;
       z-index: 1;
-      top: 50px;
     }
 
     img {
+      /* \`display: block\` drops the inline baseline gap that was adding 5px
+         below the icon and pushing it off the pill's vertical centre. */
+      display: block;
       position: relative;
       z-index: 2;
       object-fit: cover;
@@ -75,12 +101,19 @@ export const Nav = styled.div`
   }
 
   @media (max-width: 768px) {
+    /* Laid over the open panel, which is MENU_PANEL_WIDTH wide and ends on
+       this row's right edge — so the links take the panel's own width and are
+       inset from its edges, rather than being pushed in from the viewport by a
+       fixed number of pixels that only lined up on one phone. */
     position: absolute;
     top: 60px;
+    right: 0;
+    width: ${MENU_PANEL_WIDTH}px;
+    padding: 0 1.75rem;
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;
-    right: 120px;
+    margin-right: 0;
     z-index: 3;
     visibility: hidden;
     opacity: 0;
@@ -116,10 +149,14 @@ export const CallToActions = styled.div`
   }
 
   @media (max-width: 768px) {
+    /* Same panel-width slot as the links above it. */
     position: absolute;
     top: 220px;
+    right: 0;
+    width: ${MENU_PANEL_WIDTH}px;
+    padding: 0 1.75rem;
+    justify-content: center;
     z-index: 3;
-    right: 50px;
     visibility: hidden;
     opacity: 0;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);

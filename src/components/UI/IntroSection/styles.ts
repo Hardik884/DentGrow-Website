@@ -49,6 +49,11 @@ export const Header = styled.header`
   }
 
   @media (max-width: 768px) {
+    /* The 7.38rem the wide layout leaves under this header is measured against
+       a fan that is most of a screen tall. The phone composition below is a
+       third of that, so the same gap reads as the section having stalled. */
+    margin-bottom: 5rem;
+
     h1 {
       font-size: 2.25rem;
     }
@@ -71,6 +76,11 @@ export const HeaderMainText = styled.div`
   }
 `;
 
+/**
+ * The desktop fan. Rendered only above the breakpoint — see MobilePanels below
+ * for what a phone gets instead — so everything in here is free to assume a
+ * pointer and a wide row.
+ */
 export const CardsContainer = styled.div`
   display: flex;
   align-items: center;
@@ -78,36 +88,6 @@ export const CardsContainer = styled.div`
   position: relative;
   margin-bottom: 7.77rem;
   width: 100%;
-
-  /*
-   * Below the breakpoint the fan becomes a stack.
-   *
-   * The fan is a hover interaction: the two outer panels sit folded behind the
-   * centre one and only swing out when the centre card is hovered. Touch has no
-   * hover, so on a phone two thirds of this section's content could not be
-   * reached at all. Stacking them keeps every panel visible without asking for
-   * a gesture the device cannot make.
-   */
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 4.5rem;
-  }
-`;
-
-/* Shared by the two outer panels: static, full-width and unrotated once the
-   fan is a stack, whether or not the hover class happens to be set. */
-const stackedOnMobile = `
-  @media (max-width: 768px) {
-    &,
-    &.active {
-      position: relative;
-      top: auto;
-      width: 100%;
-      height: auto;
-      transform: none;
-    }
-  }
 `;
 
 export const LeftImage = styled(Image)`
@@ -124,20 +104,12 @@ export const LeftImage = styled(Image)`
     transform: rotate(70.281deg) translate(-50%, 60%);
     top: 60%;
   }
-
-  ${stackedOnMobile}
 `;
 
 export const MiddleImage = styled(Image)`
   position: relative;
   z-index: 3;
   cursor: pointer;
-
-  @media (max-width: 768px) {
-    cursor: default;
-    width: 100%;
-    height: auto;
-  }
 `;
 
 export const RightImage = styled(Image)`
@@ -152,6 +124,89 @@ export const RightImage = styled(Image)`
     transform: rotate(-70.281deg) translate(50%, 60%);
     top: 60%;
   }
+`;
 
-  ${stackedOnMobile}
+/**
+ * What a phone gets in place of the fan.
+ *
+ * The fan is a hover interaction — the outer panels sit folded behind the
+ * centre one until the centre is hovered — and touch has no hover, so the phone
+ * layout used to unfold it into three full-width screenshots in a column. Every
+ * panel was visible, but at equal weight and nearly a thousand pixels of
+ * scroll: three screenshots in a list rather than a composition.
+ *
+ * One panel leads instead and the other two sit under it as a compact pair, so
+ * the section reads the way the fan does — a main view with its supporting
+ * panels around it — in about a third of the height. Same three panels, same
+ * card surface, same radius; only the arrangement is different.
+ */
+export const MobilePanels = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* The pair sizes itself from its own aspect rather than being stretched to
+       whatever the taller of the two would be. */
+    align-items: start;
+    gap: 0.75rem;
+    width: 100%;
+    margin-bottom: 4.5rem;
+  }
+`;
+
+/* The card surface the panels are framed in — the page's own: #131313 behind a
+   hairline, with the screenshot's corners following the frame's. */
+const panelFrame = `
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid var(--stroke, rgba(255, 255, 255, 0.04));
+  background: #131313;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+`;
+
+export const PrimaryPanel = styled.div`
+  ${panelFrame}
+  grid-column: 1 / -1;
+`;
+
+/**
+ * The two supporting panels, side by side under the lead.
+ *
+ * Each is a fixed, shared slot with the screenshot filling it from the top
+ * left, so the pair reads as one row of cards rather than as two more
+ * screenshots at two more sizes. The crop is deliberate: what is worth seeing
+ * at this size — the day's figures, the top of the workflow list — is at the
+ * top of both shots.
+ */
+export const SecondaryPanel = styled.div`
+  ${panelFrame}
+  /* The figures panel's own shape, so it lands in its slot uncropped at every
+     width and the taller navigation shot is the only one the frame trims. */
+  aspect-ratio: 350 / 222;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    object-position: left top;
+  }
+
+  /* The same fade the page's other cropped screenshots end on, so a cut that
+     does not land on a row boundary reads as the panel continuing. */
+  &::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2rem;
+    background: linear-gradient(180deg, rgba(19, 19, 19, 0) 0%, #131313 100%);
+    pointer-events: none;
+  }
 `;

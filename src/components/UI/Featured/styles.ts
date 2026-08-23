@@ -81,6 +81,18 @@ export const ImageContainer = styled.div`
 
 export const ParallaxImages = styled.div`
   position: relative;
+  /*
+   * \`width: 100%\` is load-bearing, not decoration.
+   *
+   * This is a centred item in a column flex container, so with no width of its
+   * own it is shrink-to-fit: it took the marquee's max-content width — 859px of
+   * nowrap text — and only the max-width kept it there. On a phone that is more
+   * than twice the viewport, and the strip took the page's horizontal scroll
+   * with it, hidden behind the blanket \`overflow-x\` on the body. Bound to the
+   * container instead; the max-width still decides the size on every layout
+   * wide enough to reach it, so nothing above the breakpoint moves.
+   */
+  width: 100%;
   max-width: 53.7rem;
   margin: 3rem auto 0;
 `;

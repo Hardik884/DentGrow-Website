@@ -70,7 +70,7 @@ const IntroSection = () => {
           {edges.map((edge, i) => (
             <Edge key={i}>
               <Title>
-                <Image src={edge.icon} alt="icon" />
+                <Image src={edge.icon} alt="" aria-hidden />
                 <MaskText phrases={new Array(edge.point)} tag="h3" />
               </Title>
               <MaskText phrases={new Array(edge.details)} tag="p" />

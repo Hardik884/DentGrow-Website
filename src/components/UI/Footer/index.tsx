@@ -1,6 +1,5 @@
 'use client';
 import Image from 'next/image';
-import ic_chevron_down from '../../../../public/svgs/ic_chevron_down.svg';
 import ic_copyright from '../../../../public/svgs/ic_copyright.svg';
 import { GetStartedButton, Logo } from '@/components';
 import { useDemoDialog } from '../../Common/DemoDialog/context';
@@ -15,8 +14,9 @@ import {
  * The Product column mirrors the header and points at the same sections, so
  * both navigations agree and neither carries a Pricing entry there is no page
  * for. "Contact" opens the demo dialog, which is the site's only contact
- * channel. The remaining entries are labels: they name what exists rather than
- * linking to pages this site does not have.
+ * channel. The remaining entries are labels, not links: they name who the
+ * product is for, and are styled as plain text so nothing invites a click that
+ * would go nowhere.
  */
 type FooterEntry = {
   label: string;
@@ -46,11 +46,7 @@ const linksArr: { title: string; links: FooterEntry[] }[] = [
   },
   {
     title: 'Company',
-    links: [
-      { label: 'Contact', action: 'demo' },
-      { label: 'Privacy policy' },
-      { label: 'Terms of use' },
-    ],
+    links: [{ label: 'Contact', action: 'demo' }],
   },
 ];
 
@@ -69,7 +65,6 @@ import {
   FooterLink,
   FooterButton,
   FooterBottom,
-  Translator,
   CopyRight,
 } from './styles';
 
@@ -130,12 +125,8 @@ const Footer = () => {
             </FooterNavigation>
           </FooterMiddle>
           <FooterBottom>
-            <Translator>
-              <h3>English (United Kingdom)</h3>
-              <Image src={ic_chevron_down} alt="chevron down" />
-            </Translator>
             <CopyRight>
-              <Image src={ic_copyright} alt="copyright svg" />
+              <Image src={ic_copyright} alt="" aria-hidden />
               DentGrow
             </CopyRight>
           </FooterBottom>

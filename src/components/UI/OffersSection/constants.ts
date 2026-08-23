@@ -24,24 +24,28 @@ export const offers = [
   {
     illustration: offer_queue,
     title: 'Appointments and queue',
+    alt: "DentGrow's Live Queue: who is being seen now and who is up next",
     details:
       'Bookings, check-ins and the day’s queue sit in one place, so the front desk always knows who is waiting and who is next.',
   },
   {
     illustration: offer_patient,
     title: 'Patients and history',
+    alt: 'A DentGrow patient record showing visits, last visit and outstanding balance',
     details:
       'One record per patient: contact details, visit history, notes and what they still owe.',
   },
   {
     illustration: offer_chart,
     title: 'Clinical records',
+    alt: 'A DentGrow dental chart with per-tooth treatment status and its legend',
     details:
       'A dental chart, treatments and consent that stay attached to the patient rather than to a folder.',
   },
   {
     illustration: offer_revenue,
     title: 'Billing and payments',
+    alt: "DentGrow's revenue card showing the day's takings",
     details:
       'Bills raised from the treatment that was actually done, with payments and outstanding balances tracked against it.',
   },

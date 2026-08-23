@@ -123,39 +123,22 @@ export const LinksContainer = styled.ul`
   flex-direction: column;
   gap: 0.75rem;
 
+  /* Type only. The pointer and the underline-on-hover live on the two
+     components below, so an entry looks clickable exactly when it is —
+     several of these columns are labels for who the product serves, not
+     links to pages this site has. */
   li {
     color: #efefef;
     font-size: 1rem;
     font-weight: 400;
-    cursor: pointer;
-    position: relative;
-
-    &::after {
-      position: absolute;
-      content: '';
-      width: 100%;
-      height: 1px;
-      background-color: #efefef;
-      left: 0;
-      bottom: -5px;
-      transform: scaleX(0);
-      transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-      transform-origin: center;
-    }
-
-    &:hover {
-      &::after {
-        width: 100%;
-        transform: scaleX(1);
-      }
-    }
   }
 `;
 
-/* The Product column's entries are real anchors now, and Contact opens the
-   demo dialog. Both inherit the list's type and its underline-on-hover, so the
-   column looks exactly as it did. */
+/* The Product column's entries are real anchors and Contact opens the demo
+   dialog. These carry the affordance the list used to give every item. */
 const footerAction = `
+  position: relative;
+  display: inline-block;
   color: inherit;
   font: inherit;
   background: none;
@@ -163,6 +146,24 @@ const footerAction = `
   padding: 0;
   cursor: pointer;
   text-decoration: none;
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #efefef;
+    left: 0;
+    bottom: -5px;
+    transform: scaleX(0);
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform-origin: center;
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    transform: scaleX(1);
+  }
 
   &:focus-visible {
     outline: 2px solid var(--emerald);
@@ -183,26 +184,6 @@ export const FooterBottom = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
-
-export const Translator = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.12rem;
-  cursor: pointer;
-
-  h3 {
-    font-size: 1.5rem;
-    font-weight: 400;
-  }
-
-  @media (max-width: 768px) {
-    gap: 0.5rem;
-
-    h3 {
-      font-size: 0.875rem;
-    }
-  }
 `;
 
 export const CopyRight = styled.div`

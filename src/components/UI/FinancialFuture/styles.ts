@@ -132,7 +132,7 @@ export const SVGCtn = styled.div`
 `;
 
 export const Stats = styled.div`
-  margin: 6.25rem auto;
+  margin: 6.25rem auto 2.5rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -194,6 +194,46 @@ export const Stat = styled.div`
  * 1440px ceiling, same 35rem height and same corner radius — so the two
  * screenshots carry the same weight on the page.
  */
+/**
+ * The five areas, under the row that counts them.
+ *
+ * A hairline above groups the two into one block, so the pills read as the
+ * enumeration of the "5" rather than as a stray row of tags. Same pill shape as
+ * the hero's, one step quieter.
+ */
+export const Areas = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: 1440px;
+  margin: 0 auto 6.25rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+    margin-bottom: 3.75rem;
+    padding-top: 2rem;
+  }
+`;
+
+export const Area = styled.span`
+  padding: 0.5rem 1.125rem;
+  border-radius: 6.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--link-color);
+  font-size: 1rem;
+  font-weight: 400;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    padding: 0.375rem 0.875rem;
+    font-size: 0.875rem;
+  }
+`;
+
 export const Banner = styled.div`
   position: relative;
   width: 90%;
@@ -214,5 +254,27 @@ export const Banner = styled.div`
   @media (max-width: 768px) {
     height: 23.75rem;
     border-radius: 0.5rem;
+  }
+
+  /* A screenshot cropped to a phone-shaped slot has to stop somewhere, and it
+     will not always be on a row boundary. Fading the last few pixels into the
+     page means the cut reads as the panel continuing rather than as a broken
+     image. Mobile only: the desktop banners are wide enough to end cleanly. */
+  @media (max-width: 768px) {
+    &::after {
+      position: absolute;
+      content: '';
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3.5rem;
+      background: linear-gradient(
+        180deg,
+        rgba(7, 6, 6, 0) 0%,
+        var(--Background, #070606) 100%
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
   }
 `;

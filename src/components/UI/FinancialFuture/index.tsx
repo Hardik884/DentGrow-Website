@@ -12,11 +12,14 @@ import {
   SVGCtn,
   Stats,
   Stat,
+  Areas,
+  Area,
   Banner,
 } from './styles';
 import MaskText from '@/components/Common/MaskText';
 import { useIsMobile } from '../../../../libs/useIsMobile';
 import {
+  areas,
   cardsInfo,
   desktopHeaderPhrase,
   desktopParagraphPhrase,
@@ -65,6 +68,12 @@ const FinancialFuture = () => {
             </Stat>
           ))}
         </Stats>
+        {/* Names the "areas of the clinic" the row above counts. */}
+        <Areas>
+          {areas.map((area, i) => (
+            <Area key={i}>{area}</Area>
+          ))}
+        </Areas>
       </Inner>
       <Banner>
         {isMobile ? (

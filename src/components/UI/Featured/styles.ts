@@ -55,6 +55,28 @@ export const ImageContainer = styled.div`
       height: 23.75rem;
     }
   }
+
+  /* A screenshot cropped to a phone-shaped slot has to stop somewhere, and it
+     will not always be on a row boundary. Fading the last few pixels into the
+     page means the cut reads as the panel continuing rather than as a broken
+     image. Mobile only: the desktop banners are wide enough to end cleanly. */
+  @media (max-width: 768px) {
+    &::after {
+      position: absolute;
+      content: '';
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3.5rem;
+      background: linear-gradient(
+        180deg,
+        rgba(7, 6, 6, 0) 0%,
+        var(--Background, #070606) 100%
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
+  }
 `;
 
 export const ParallaxImages = styled.div`

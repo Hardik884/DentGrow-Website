@@ -78,9 +78,43 @@ export const CardsContainer = styled.div`
   position: relative;
   margin-bottom: 7.77rem;
   width: 100%;
+
+  /*
+   * Below the breakpoint the fan becomes a stack.
+   *
+   * The fan is a hover interaction: the two outer panels sit folded behind the
+   * centre one and only swing out when the centre card is hovered. Touch has no
+   * hover, so on a phone two thirds of this section's content could not be
+   * reached at all. Stacking them keeps every panel visible without asking for
+   * a gesture the device cannot make.
+   */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 4.5rem;
+  }
+`;
+
+/* Shared by the two outer panels: static, full-width and unrotated once the
+   fan is a stack, whether or not the hover class happens to be set. */
+const stackedOnMobile = `
+  @media (max-width: 768px) {
+    &,
+    &.active {
+      position: relative;
+      top: auto;
+      width: 100%;
+      height: auto;
+      transform: none;
+    }
+  }
 `;
 
 export const LeftImage = styled(Image)`
+  /* Folded flat behind the centre card until it is hovered, as designed.
+     A resting offset was tried so the fan would advertise itself, and backed
+     out: these panels are screenshots, and a screenshot standing on its side
+     reads as broken UI rather than as the edge of a stacked card. */
   transform: rotate(270deg);
   position: absolute;
   top: 64px;
@@ -90,12 +124,20 @@ export const LeftImage = styled(Image)`
     transform: rotate(70.281deg) translate(-50%, 60%);
     top: 60%;
   }
+
+  ${stackedOnMobile}
 `;
 
 export const MiddleImage = styled(Image)`
   position: relative;
   z-index: 3;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    cursor: default;
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const RightImage = styled(Image)`
@@ -110,4 +152,6 @@ export const RightImage = styled(Image)`
     transform: rotate(-70.281deg) translate(50%, 60%);
     top: 60%;
   }
+
+  ${stackedOnMobile}
 `;

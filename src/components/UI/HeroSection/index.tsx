@@ -6,6 +6,10 @@ import { GetStartedButton } from '@/components';
 import MaskText from '@/components/Common/MaskText';
 import { useIsMobile } from '../../../../libs/useIsMobile';
 import {
+  SECTION_IDS,
+  useScrollToSection,
+} from '../../../../libs/useScrollToSection';
+import {
   mobileParagraphPhrases,
   mobilePhrases,
   paragraphPhrases,
@@ -14,12 +18,19 @@ import {
 
 const HeroSection = () => {
   const isMobile = useIsMobile();
+  const scrollToSection = useScrollToSection();
+  const productHref = `#${SECTION_IDS.product}`;
   return (
     <Wrapper>
       <Inner>
-        <Pill>
+        {/* It carries a chevron, so it has to lead somewhere: the product
+            showcase directly below. */}
+        <Pill
+          href={productHref}
+          onClick={(event) => scrollToSection(event, productHref)}
+        >
           <span>Introducing DentGrow</span>
-          <Image src={ic_chevron_right} alt="chevron-right" />
+          <Image src={ic_chevron_right} alt="" aria-hidden />
         </Pill>
         <HeroTextContainer>
           {isMobile ? (

@@ -54,13 +54,20 @@ const FAQ = () => {
               custom={index}
               key={index}
             >
-              <Question onClick={() => toggleItem(index)}>
+              <Question
+                type="button"
+                onClick={() => toggleItem(index)}
+                aria-expanded={openItem === index}
+                aria-controls={`faq-answer-${index}`}
+                $open={openItem === index}
+              >
                 {item.question}
-                <Image src={ic_chevron_down} alt="cheveron down" />
+                <Image src={ic_chevron_down} alt="" aria-hidden />
               </Question>
               <AnimatePresence>
                 {openItem === index && (
                   <Answer
+                    id={`faq-answer-${index}`}
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}

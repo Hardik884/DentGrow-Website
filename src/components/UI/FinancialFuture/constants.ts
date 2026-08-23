@@ -50,6 +50,20 @@ export const stats = [
   },
 ];
 
+/**
+ * The five categories the signal evaluators are grouped into, named rather than
+ * counted. "5 areas of the clinic" is only meaningful once a reader can see
+ * which five; these are the evaluator directories in the Business Brain
+ * (financial, scheduling, retention, operational, clinical), in clinic words.
+ */
+export const areas = [
+  'Revenue',
+  'Scheduling',
+  'Retention',
+  'Operations',
+  'Clinical',
+];
+
 // For desktop
 export const desktopHeaderPhrase = [
   'Don’t just see',

@@ -47,19 +47,41 @@ export const AccordionItem = styled(motion.div)`
   overflow: hidden;
 `;
 
-export const Question = styled(motion.div)`
+export const Question = styled(motion.button)<{ $open: boolean }>`
+  /* A real button: these rows toggle content, so they must be reachable and
+     operable from the keyboard, not just clickable. */
+  width: 100%;
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   cursor: pointer;
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 1.5rem;
+  padding: 0;
+
+  /* The only signal that an item is open used to be the answer appearing.
+     The chevron now points at its own state. */
+  img {
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+    transform: rotate(${({ $open }) => ($open ? '180deg' : '0deg')});
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 6px;
+    border-radius: 2px;
+  }
 
   @media (max-width: 768px) {
     font-size: 1rem;
-    margin-bottom: 2rem;
-    gap: 1rem;
   }
 `;
 

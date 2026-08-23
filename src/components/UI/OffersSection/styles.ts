@@ -53,14 +53,25 @@ export const ImageCtn = styled.div`
   position: relative;
   display: flex;
 
+  /*
+   * A short vignette at the very bottom edge only.
+   *
+   * This was a 13.4rem gradient starting 50px down, which is what you want
+   * behind a transparent illustration: it melts the artwork into the card.
+   * These slots hold opaque product screenshots now, and that gradient laid a
+   * grey veil over the bottom two thirds of every one of them — the shots read
+   * as dissolving rather than as crisp product. Kept as a thin fade so the
+   * cropped edge still settles into the card instead of stopping dead.
+   */
   &::after {
     position: absolute;
     content: '';
-    height: 13.4375rem;
+    height: 2.5rem;
     width: 100%;
     background: linear-gradient(180deg, rgba(19, 19, 19, 0) 0%, #131313 100%);
     left: 0;
-    top: 50px;
+    bottom: 0;
+    pointer-events: none;
   }
 
   img {
@@ -72,7 +83,7 @@ export const ImageCtn = styled.div`
     margin: 0.32rem auto 0;
 
     &::after {
-      top: 30px;
+      height: 1.75rem;
     }
 
     img {

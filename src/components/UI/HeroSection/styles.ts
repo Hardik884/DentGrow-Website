@@ -18,7 +18,7 @@ export const Inner = styled.div`
   background-size: contain;
 `;
 
-export const Pill = styled.div`
+export const Pill = styled.a`
   display: flex;
   padding: 0.375rem 0.75rem;
   justify-content: center;
@@ -29,6 +29,19 @@ export const Pill = styled.div`
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   margin-bottom: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.3s ease, background 0.3s ease;
+
+  &:hover {
+    border-color: var(--emerald);
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 3px;
+  }
 
   span {
     color: var(--light-gray);

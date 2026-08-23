@@ -9,6 +9,12 @@ Studio** (`00000000-0000-0000-0000-000000000001`), signed in as
 `brain@dentgrow.test`. No production database was touched and no real patient
 information appears in any frame.
 
+The demo clinic is deliberately shaped to sit in the **"Good"** health band with
+two genuine items open. An earlier capture scored 53 / "Urgent" — accurate for
+the data beneath it, but a poor way to meet the product's flagship screen. A
+clinic with nothing to act on is no better: the briefing's whole point is that
+it finds real work, so the data holds a couple of honest items rather than none.
+
 **Capture settings, identical for all three:** a **1920 × 1200** viewport at
 `deviceScaleFactor: 2`, resampled to **2880 × 1800** (1440 × 900 at 2×).
 `Asia/Kolkata`, light theme, fonts resolved, no loading states, dev-tools badge
@@ -49,7 +55,7 @@ Files live in `public/images/dentgrow/`.
 |---|---|
 | **File** | `dentgrow-business-brain.png` |
 | **Screen** | `/dentist/business-brain` — the daily briefing |
-| **Shows** | Clinic health score, the "Needs attention" column worst-first with its figures, and the matching "What to do" column with its action buttons |
+| **Shows** | Clinic health score (73, "Good"), the "Needs attention" column worst-first with its figures, and the matching "What to do" column with its action buttons |
 | **Appears in** | "Don't just see your clinic", contained banner (`FinancialFuture`), sized to match the dashboard banner |
 
 ---

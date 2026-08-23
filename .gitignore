@@ -25,7 +25,15 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env*.local
+
+# Google service-account keys. The JSON file downloaded from the Cloud Console
+# is a live credential; its two useful values belong in the environment, not in
+# the repo. See README.md.
+service-account*.json
+*-service-account.json
+gcp-key*.json
 
 # vercel
 .vercel

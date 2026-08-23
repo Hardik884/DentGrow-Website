@@ -52,6 +52,13 @@ const DemoDialog = () => {
   const [status, setStatus] = useState<Status>('idle');
   const [submitted, setSubmitted] = useState(false);
 
+  /*
+   * Guards against a second submission while the first is in the air.
+   * `status` alone is not enough: it is React state, so two clicks landing in
+   * the same tick both read the pre-update value and both POST. A ref flips
+   * synchronously, so the second click sees it immediately.
+   */
+  const inFlight = useRef(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const firstFieldRef = useRef<HTMLInputElement>(null);
   const openerRef = useRef<Element | null>(null);
@@ -129,6 +136,7 @@ const DemoDialog = () => {
       setErrors({});
       setStatus('idle');
       setSubmitted(false);
+      inFlight.current = false;
     }, 300);
     return () => window.clearTimeout(id);
   }, [isOpen]);
@@ -145,6 +153,7 @@ const DemoDialog = () => {
 
   const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (inFlight.current) return;
     setSubmitted(true);
 
     const found = validateDemoRequest(values);
@@ -160,6 +169,7 @@ const DemoDialog = () => {
       return;
     }
 
+    inFlight.current = true;
     setStatus('submitting');
     try {
       const response = await fetch('/api/demo-request', {
@@ -168,13 +178,13 @@ const DemoDialog = () => {
         body: JSON.stringify(values),
       });
 
-      if (!response.ok) {
-        setStatus('error');
-        return;
-      }
-      setStatus('success');
+      // Success is reported only for a 200, which the server sends only after
+      // Google has confirmed the row.
+      setStatus(response.ok ? 'success' : 'error');
     } catch {
       setStatus('error');
+    } finally {
+      inFlight.current = false;
     }
   };
 

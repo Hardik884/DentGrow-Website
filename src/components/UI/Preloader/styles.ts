@@ -13,6 +13,19 @@ const panel = `
   width: 100vw;
   height: 100vh;
   height: 100dvh;
+
+  /*
+   * Both panels are decorative and aria-hidden; nothing in them is ever
+   * interactive, so they have no business intercepting a click.
+   *
+   * This is load-bearing, not tidiness. Under prefers-reduced-motion the
+   * panels leave by fading rather than by scaling away, which drops them to
+   * opacity 0 while they are still full-viewport and on top of everything —
+   * invisible, but swallowing every click on the page. The site was entirely
+   * unusable for anyone who asks for reduced motion. Declaring it here fixes
+   * both exit paths and does not depend on how the timeline animates them out.
+   */
+  pointer-events: none;
 `;
 
 export const Wrapper = styled.div`

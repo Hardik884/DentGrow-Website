@@ -45,7 +45,7 @@ const HeroSection = () => {
             </>
           )}
         </HeroTextContainer>
-        <GetStartedButton padding="1rem 2rem" />
+        <GetStartedButton size="large" />
       </Inner>
     </Wrapper>
   );

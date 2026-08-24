@@ -175,11 +175,16 @@ export const CallToActions = styled.div`
     button {
       background: var(--white);
       color: var(--jade);
+      /* The rest border is a light hairline meant for a jade fill; on white it
+         would vanish, so the inverted button borrows the panel's own colour. */
+      border-color: rgba(23, 107, 80, 0.16);
     }
 
     button:hover {
       background: var(--jade-tint);
       color: var(--jade-pressed);
+      border-color: rgba(18, 84, 62, 0.22);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
     }
 
     button:active {
@@ -187,6 +192,7 @@ export const CallToActions = styled.div`
       color: var(--jade-pressed);
     }
 
+    /* The panel is jade, so the jade focus ring would disappear into it. */
     button:focus-visible {
       outline-color: var(--white);
     }

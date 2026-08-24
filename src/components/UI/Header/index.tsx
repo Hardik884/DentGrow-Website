@@ -47,7 +47,7 @@ const Header = () => {
         {/* Book a Demo is the only action in the header: this is a marketing
             site, so it carries no sign-in or account links. */}
         <CallToActions className={isOpen ? 'active' : ''}>
-          <GetStartedButton padding="0.5rem 0.75rem" />
+          <GetStartedButton size="compact" />
         </CallToActions>
       </Inner>
     </Wrapper>

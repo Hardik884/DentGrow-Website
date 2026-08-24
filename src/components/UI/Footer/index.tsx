@@ -90,7 +90,7 @@ const Footer = () => {
                   that keep your practice moving.
                 </p>
                 <ActionCtn>
-                  <GetStartedButton padding="0.75rem 1.5rem" />
+                  <GetStartedButton size="default" />
                 </ActionCtn>
               </TextCtn>
             </CallToAction>

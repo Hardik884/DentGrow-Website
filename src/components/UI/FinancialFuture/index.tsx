@@ -17,6 +17,7 @@ import {
   Banner,
 } from './styles';
 import MaskText from '@/components/Common/MaskText';
+import AnimatedNumber from '@/components/Common/AnimatedNumber';
 import { useIsMobile } from '../../../../libs/useIsMobile';
 import {
   areas,
@@ -63,7 +64,7 @@ const FinancialFuture = () => {
         <Stats>
           {stats.map((stat, i) => (
             <Stat key={i}>
-              <MaskText phrases={new Array(stat.number)} tag="h1" />
+              <AnimatedNumber value={stat.number} />
               <MaskText phrases={new Array(stat.subtitle)} tag="p" />
             </Stat>
           ))}

@@ -15,4 +15,5 @@ export const connectedAreas = [
   'Payments',
   'Follow-ups',
   'Analytics',
+  'Actions',
 ];

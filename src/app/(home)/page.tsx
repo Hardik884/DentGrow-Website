@@ -7,6 +7,7 @@ import {
   IntroSection,
   JoinSection,
   OffersSection,
+  TrustSection,
 } from '@/components';
 
 export default function Home() {
@@ -15,10 +16,15 @@ export default function Home() {
       <HeroSection />
       <Featured />
       <OffersSection />
-      <FinancilaFreedom />
+      {/* Intelligence / Action Layer now leads Treat with context, so the
+          narrative sees the whole connected workflow before it sees the
+          intelligence layered on top of it, and only then the clinical
+          detail underneath. */}
       <FinancialFuture />
+      <FinancilaFreedom />
       <IntroSection />
       <JoinSection />
+      <TrustSection />
       <FAQ />
     </main>
   );

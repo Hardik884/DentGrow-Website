@@ -87,7 +87,7 @@ const Footer = () => {
                 <h3>Bring your clinic together.</h3>
                 <p>
                   One connected system for the people, patients and processes
-                  that keep your practice moving.
+                  that keep your clinic growing.
                 </p>
                 <ActionCtn>
                   <GetStartedButton size="default" />

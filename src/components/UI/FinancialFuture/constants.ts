@@ -11,14 +11,14 @@ export const cardsInfo = [
   {
     title: 'See what needs attention',
     details:
-      'DentGrow reads the day’s activity and surfaces what is actually going wrong — worst first, in plain language rather than a wall of charts.',
+      'DentGrow continuously watches activity across the clinic and brings important issues to the surface before they get lost in the day-to-day',
     visual: brain_attention,
     alt: "DentGrow's Needs attention list: unused chair time, and patients with planned treatment who have not booked their next visit",
   },
   {
-    title: 'Know what to do next',
+    title: 'Know what to do next and take action on it',
     details:
-      'Every signal comes with the step that answers it and the button that starts it, so a problem the clinic can see is a problem the clinic can act on.',
+      'Turn important signals into clear next steps, so you can act on what matters instead of digging through the clinic’s data yourself.',
     visual: brain_action,
     alt: "DentGrow's What to do list, pairing each finding with a step and a Book Appointment button",
   },
@@ -71,7 +71,7 @@ export const desktopHeaderPhrase = [
   'what to do next.',
 ];
 export const desktopParagraphPhrase = [
-  'DentGrow turns clinic activity into actionable insights so your team can see',
+  'DentGrow turns clinic activity into actionable insights so you can see',
   'what needs attention.',
 ];
 
@@ -83,6 +83,6 @@ export const mobileHeaderPhrase = [
 ];
 export const mobileParagraphPhrase = [
   'DentGrow turns clinic activity into',
-  'actionable insights so your team can',
-  'see what needs attention.',
+  'actionable insights so you can see',
+  'what needs attention.',
 ];

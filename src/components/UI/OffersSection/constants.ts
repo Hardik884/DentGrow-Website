@@ -4,20 +4,24 @@ import offer_chart from '../../../../public/images/dentgrow/offer_chart.png';
 import offer_revenue from '../../../../public/images/dentgrow/offer_revenue.png';
 
 // For desktop
+// Two distinct sentences, not one wrapped across two lines: the first states
+// the scope, the second names what holds it together. MaskText already
+// staggers each phrase's reveal, which is what gives the pair its hierarchy.
 export const desktopHeaderPhrases = [
-  'Everything your clinic',
-  'needs, working together',
+  'Everything your clinic needs.',
+  'One connected workflow.',
 ];
 export const desktopParagraphPhrase = [
-  'Appointments, patients, clinical work, payments and follow-ups stay connected',
-  'instead of living across disconnected tools.',
+  'Appointments, patients, clinical work, billing, payments and follow-ups',
+  'stay connected from first booking to completed treatment.',
 ];
 
 // For mobile
 export const mobileParagraphPhrase = [
-  'Appointments, patients, clinical work, payments',
-  'and follow-ups stay connected instead of living',
-  'across disconnected tools.',
+  'Appointments, patients, clinical work,',
+  'billing, payments and follow-ups stay',
+  'connected from first booking to',
+  'completed treatment.',
 ];
 
 export const offers = [

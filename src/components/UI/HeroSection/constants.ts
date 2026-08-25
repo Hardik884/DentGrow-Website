@@ -1,14 +1,17 @@
 // For desktop
 export const phrases = ['Your entire clinic,', 'connected.'];
 export const paragraphPhrases = [
-  'DentGrow brings the people, patients and processes that run your',
-  'practice together in one place.',
+  'Run your entire practice in one place — with built-in intelligence',
+  'that helps you spot what needs attention, prioritise what matters,',
+  'and know what to do next.',
 ];
 
 // For mobile
 export const mobilePhrases = ['Your entire clinic,', 'connected.'];
 export const mobileParagraphPhrases = [
-  'DentGrow brings the people, patients and',
-  'processes that run your practice together',
-  'in one place.',
+  'Run your entire practice in one',
+  'place — with built-in intelligence',
+  'that helps you spot what needs',
+  'attention, prioritise what matters,',
+  'and know what to do next.',
 ];

@@ -11,7 +11,7 @@ export type Props = {
 };
 
 /**
- * This section carried customer testimonials on the original layout. DentGrow
+ * This section carried customer testimonials on the original layout. OraMedha
  * has no verified customer quotes to put here, and inventing them is not an
  * option, so the composition is kept and filled with what the patient-facing
  * side of the product actually does. Nothing below is a claim about a customer,

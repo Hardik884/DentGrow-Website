@@ -16,7 +16,7 @@ import {
   MARK_VIEWBOX,
 } from '@/components/Common/Logo/mark';
 
-const WORD = 'DentGrow'.split('');
+const WORD = 'OraMedha'.split('');
 
 /** Nothing may hold the page for longer than this, whatever else happens. */
 const FAILSAFE_MS = 3200;
@@ -24,7 +24,7 @@ const FAILSAFE_MS = 3200;
 /**
  * The loading screen.
  *
- * One centred DentGrow lockup, then Raft's two-layer wipe into the hero. The
+ * One centred OraMedha lockup, then Raft's two-layer wipe into the hero. The
  * mark settles, the wordmark's letters rise out of a mask, and the dark panel
  * lifts to reveal the emerald one, which lifts in turn.
  *

@@ -29,7 +29,7 @@ const HeroSection = () => {
           href={productHref}
           onClick={(event) => scrollToSection(event, productHref)}
         >
-          <span>Introducing DentGrow</span>
+          <span>Introducing OraMedha</span>
           <Image src={ic_chevron_right} alt="" aria-hidden />
         </Pill>
         <HeroTextContainer>

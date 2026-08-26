@@ -3,9 +3,9 @@ import './globals.css';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'DentGrow',
+  title: 'OraMedha',
   description:
-    'DentGrow brings the people, patients and processes that run your clinic together in one place.',
+    'OraMedha brings the people, patients and processes that run your clinic together in one place.',
 };
 
 export default function RootLayout({

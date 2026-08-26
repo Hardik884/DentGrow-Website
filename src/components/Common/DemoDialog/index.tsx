@@ -231,7 +231,7 @@ const DemoDialog = () => {
                   <h2 id={fieldId('title')}>Book a demo</h2>
                   <p>
                     Tell us how to reach you and we&rsquo;ll arrange a walkthrough
-                    of DentGrow with your clinic.
+                    of OraMedha with your clinic.
                   </p>
                 </Header>
 

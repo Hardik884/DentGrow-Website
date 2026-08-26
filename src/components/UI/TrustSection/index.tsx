@@ -13,7 +13,7 @@ import {
 /**
  * A positioning statement, not social proof.
  *
- * DentGrow has no customer logos, testimonials or verified counts to put
+ * OraMedha has no customer logos, testimonials or verified counts to put
  * here, so this stays what it is: how the product was built, in the same
  * eyebrow-plus-headline shape the rest of the page already uses (see
  * IntroSection). Sits right before the FAQ, as the page's closing word on why

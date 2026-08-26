@@ -1,7 +1,7 @@
 /**
- * The DentGrow mark.
+ * The OraMedha mark.
  *
- * Copied verbatim from the DentGrow application's own `lib/brand/mark.ts`, which
+ * Copied verbatim from the OraMedha application's own `lib/brand/mark.ts`, which
  * is a mechanical trace of the source logo artwork — not a redrawing. The marketing
  * site must show the same mark the product does, so this is a copy of that file's
  * geometry rather than a new drawing. If the artwork changes, re-copy it from the

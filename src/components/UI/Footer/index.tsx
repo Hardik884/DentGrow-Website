@@ -127,7 +127,7 @@ const Footer = () => {
           <FooterBottom>
             <CopyRight>
               <Image src={ic_copyright} alt="" aria-hidden />
-              DentGrow
+              OraMedha
             </CopyRight>
           </FooterBottom>
         </FooterMainContent>

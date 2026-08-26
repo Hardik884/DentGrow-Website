@@ -58,13 +58,13 @@ const FinancialFreedom = () => {
             {isMobile ? (
               <Image
                 src={clinical_banner_mobile}
-                alt="A patient's record and dental chart in DentGrow"
+                alt="A patient's record and dental chart in OraMedha"
                 fill
               />
             ) : (
               <Image
                 src={clinical_banner}
-                alt="A patient's record and dental chart in DentGrow"
+                alt="A patient's record and dental chart in OraMedha"
                 fill
               />
             )}

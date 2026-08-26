@@ -25,7 +25,7 @@ export const animate = {
  */
 export const faqData: FAQItem[] = [
   {
-    question: 'What does DentGrow actually cover?',
+    question: 'What does OraMedha actually cover?',
     answer:
       'Patients and their history, appointments, the daily queue, the dental chart, treatments and consent, billing and payments, follow-ups and clinic analytics — plus a portal the patient uses themselves. One system rather than a tool for each of those.',
   },
@@ -35,22 +35,22 @@ export const faqData: FAQItem[] = [
       'Dentists, receptionists and clinic owners work in the same system, each with the view their job needs. Patients get their own portal, separate from the clinic-facing side.',
   },
   {
-    question: 'What makes DentGrow different?',
+    question: 'What makes OraMedha different?',
     answer:
-      'DentGrow is designed around the way dental clinics actually operate. Instead of separating appointments, patient information, clinical workflows, billing and follow-ups across different systems, it connects them in one workflow and adds an intelligence layer that helps you see what needs attention and what to do next.',
+      'OraMedha is designed around the way dental clinics actually operate. Instead of separating appointments, patient information, clinical workflows, billing and follow-ups across different systems, it connects them in one workflow and adds an intelligence layer that helps you see what needs attention and what to do next.',
   },
   {
-    question: 'What kind of clinics is DentGrow built for?',
+    question: 'What kind of clinics is OraMedha built for?',
     answer:
-      'DentGrow is built for both independent clinics and larger dental teams, with workflows that can adapt to the way different clinics operate.',
+      'OraMedha is built for both independent clinics and larger dental teams, with workflows that can adapt to the way different clinics operate.',
   },
   {
-    question: 'How does DentGrow keep clinic data secure?',
+    question: 'How does OraMedha keep clinic data secure?',
     answer:
       'Through role-based access and clinic-level data isolation. Every record belongs to a clinic, and what a dentist, a receptionist or a patient can each read and change is defined per role — both enforced in the database itself, not only in the interface.',
   },
   {
-    question: 'Who can access patient information in DentGrow?',
+    question: 'Who can access patient information in OraMedha?',
     answer:
       'Access is controlled by user roles and clinic-level permissions. Dentists, receptionists and clinic owners work in the same system, each with the view their job needs, and a patient portal account is scoped to that patient alone.',
   },

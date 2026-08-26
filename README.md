@@ -1,6 +1,6 @@
-# DentGrow — marketing site
+# OraMedha — marketing site
 
-The public site for DentGrow, a dental practice management system. Next.js App
+The public site for OraMedha, a dental practice management system. Next.js App
 Router, styled-components, GSAP and Lenis.
 
 ```bash
@@ -114,7 +114,7 @@ the key or the access token.
 
 ## Product imagery
 
-Every product visual is a screenshot of the real DentGrow application, captured
+Every product visual is a screenshot of the real OraMedha application, captured
 with Playwright against a local development instance. See
 [DENTGROW_SCREENSHOTS.md](DENTGROW_SCREENSHOTS.md) for what was captured and
 where each image is used, and `scripts/build-dentgrow-assets.py` for the crops

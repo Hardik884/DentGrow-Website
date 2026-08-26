@@ -80,13 +80,13 @@ const FinancialFuture = () => {
         {isMobile ? (
           <Image
             src={brain_banner_mobile}
-            alt="DentGrow's daily briefing, showing what needs attention and what to do"
+            alt="OraMedha's daily briefing, showing what needs attention and what to do"
             fill
           />
         ) : (
           <Image
             src={brain_banner}
-            alt="DentGrow's daily briefing, showing what needs attention and what to do"
+            alt="OraMedha's daily briefing, showing what needs attention and what to do"
             fill
           />
         )}

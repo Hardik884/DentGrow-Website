@@ -47,7 +47,7 @@ export const FooterMiddle = styled.div`
   }
 `;
 
-/* The dashed box that held the app-store QR code. DentGrow has no mobile app
+/* The dashed box that held the app-store QR code. OraMedha has no mobile app
    to point at, so the slot keeps its shape and carries the closing call to
    action instead. */
 export const CallToAction = styled.div`

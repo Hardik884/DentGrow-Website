@@ -3,7 +3,7 @@ import { Lockup, Mark, WordMark } from './styles';
 import { MARK_ASPECT, MARK_PATH, MARK_VIEWBOX } from './mark';
 
 /**
- * The DentGrow lockup — the product's own mark plus the wordmark.
+ * The OraMedha lockup — the product's own mark plus the wordmark.
  *
  * Rendered inline rather than as an <img> so the wordmark uses the page font
  * and the mark inherits colour from CSS, the way the logo it replaces did.
@@ -24,7 +24,7 @@ const Logo = ({ size = 29 }: { size?: number }) => (
     >
       <path d={MARK_PATH} fillRule="evenodd" clipRule="evenodd" />
     </Mark>
-    <WordMark>DentGrow</WordMark>
+    <WordMark>OraMedha</WordMark>
   </Lockup>
 );
 

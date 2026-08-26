@@ -11,16 +11,16 @@ export const cardsInfo = [
   {
     title: 'See what needs attention',
     details:
-      'DentGrow continuously watches activity across the clinic and brings important issues to the surface before they get lost in the day-to-day',
+      'OraMedha continuously watches activity across the clinic and brings important issues to the surface before they get lost in the day-to-day',
     visual: brain_attention,
-    alt: "DentGrow's Needs attention list: unused chair time, and patients with planned treatment who have not booked their next visit",
+    alt: "OraMedha's Needs attention list: unused chair time, and patients with planned treatment who have not booked their next visit",
   },
   {
     title: 'Know what to do next and take action on it',
     details:
       'Turn important signals into clear next steps, so you can act on what matters instead of digging through the clinic’s data yourself.',
     visual: brain_action,
-    alt: "DentGrow's What to do list, pairing each finding with a step and a Book Appointment button",
+    alt: "OraMedha's What to do list, pairing each finding with a step and a Book Appointment button",
   },
 ];
 
@@ -29,7 +29,7 @@ export const cardsInfo = [
  * implementation itself — 28 metric definitions, 18 signal evaluators across
  * five categories (financial, scheduling, retention, operational, clinical),
  * producing one daily briefing. They are deliberately NOT customer numbers,
- * revenue figures or outcome claims, none of which DentGrow has verified.
+ * revenue figures or outcome claims, none of which OraMedha has verified.
  */
 export const stats = [
   {
@@ -71,7 +71,7 @@ export const desktopHeaderPhrase = [
   'what to do next.',
 ];
 export const desktopParagraphPhrase = [
-  'DentGrow turns clinic activity into actionable insights so you can see',
+  'OraMedha turns clinic activity into actionable insights so you can see',
   'what needs attention.',
 ];
 
@@ -82,7 +82,7 @@ export const mobileHeaderPhrase = [
   'to do next.',
 ];
 export const mobileParagraphPhrase = [
-  'DentGrow turns clinic activity into',
+  'OraMedha turns clinic activity into',
   'actionable insights so you can see',
   'what needs attention.',
 ];

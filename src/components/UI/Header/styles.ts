@@ -88,7 +88,7 @@ export const Nav = styled.div`
   position: relative;
   /* The row is space-between, so the nav only lands on the page's centre line
      when this margin cancels the difference between the logo and the CTA. It
-     was -6.3rem for a narrow logo plus a Login link and a button; DentGrow's
+     was -6.3rem for a narrow logo plus a Login link and a button; OraMedha's
      lockup is wider and the Login link is gone, so the correction flips sign.
      Measured, not guessed: it puts the nav's centre within a pixel of the
      content's centre at 1024, 1280, 1440 and 1920. */

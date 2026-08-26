@@ -63,13 +63,13 @@ const IntroSection = () => {
         {isMobile ? (
           <MobilePanels>
             <PrimaryPanel>
-              <Image src={panel_right} alt="Today's appointments in DentGrow" />
+              <Image src={panel_right} alt="Today's appointments in OraMedha" />
             </PrimaryPanel>
             <SecondaryPanel>
-              <Image src={panel_left} alt="Today's numbers in DentGrow" />
+              <Image src={panel_left} alt="Today's numbers in OraMedha" />
             </SecondaryPanel>
             <SecondaryPanel>
-              <Image src={panel_centre} alt="DentGrow's navigation" />
+              <Image src={panel_centre} alt="OraMedha's navigation" />
             </SecondaryPanel>
           </MobilePanels>
         ) : (
@@ -77,18 +77,18 @@ const IntroSection = () => {
             <LeftImage
               className={isHovered ? 'active' : ''}
               src={panel_left}
-              alt="Today's numbers in DentGrow"
+              alt="Today's numbers in OraMedha"
             />
             <MiddleImage
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               src={panel_centre}
-              alt="DentGrow's navigation"
+              alt="OraMedha's navigation"
             />
             <RightImage
               className={isHovered ? 'active' : ''}
               src={panel_right}
-              alt="Today's appointments in DentGrow"
+              alt="Today's appointments in OraMedha"
             />
           </CardsContainer>
         )}

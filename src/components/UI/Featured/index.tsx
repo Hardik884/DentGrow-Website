@@ -45,13 +45,13 @@ const Featured = () => {
             {isMobile ? (
               <Image
                 src={workspace_banner_mobile}
-                alt="The DentGrow dentist dashboard"
+                alt="The OraMedha dentist dashboard"
                 fill
               />
             ) : (
               <Image
                 src={workspace_banner}
-                alt="The DentGrow dentist dashboard"
+                alt="The OraMedha dentist dashboard"
                 fill
               />
             )}

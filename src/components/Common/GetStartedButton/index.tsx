@@ -19,7 +19,12 @@ const GetStartedButton = ({ size = 'default' }: { size?: CtaSize }) => {
   const { open } = useDemoDialog();
 
   return (
-    <Trigger type="button" $size={size} onClick={open}>
+    <Trigger
+      type="button"
+      $size={size}
+      onClick={open}
+      data-testid={`book-demo-${size}`}
+    >
       Book a Demo
       <Arrow
         viewBox="0 0 16 16"

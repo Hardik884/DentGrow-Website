@@ -24,7 +24,7 @@ const SimplicitySection = () => {
   const isMobile = useIsMobile();
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="simplicity-section">
       <Inner>
         <Header>
           <h3>{eyebrow}</h3>

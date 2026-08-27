@@ -10,6 +10,20 @@ npm run build
 npm run start
 ```
 
+## End-to-end tests
+
+Playwright covers the homepage, the header/mobile navigation, the Book a Demo
+dialog (including a mocked submit, so it needs no Google credentials to pass),
+the FAQ accordion, and the Simplicity section. It runs against `next dev` on
+its own port (3100), so it won't collide with a dev server you already have
+open on 3000.
+
+```bash
+npx playwright install   # once, to fetch the browser binaries
+npm run test:e2e         # headless
+npm run test:e2e:ui      # interactive UI mode
+```
+
 ## Demo requests
 
 The site's only call to action is **Book a Demo**. Every instance of that button

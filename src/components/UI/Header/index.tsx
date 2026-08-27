@@ -23,7 +23,14 @@ const Header = () => {
       <Inner>
         <LogoContainer>
           <Logo size={29} />
-          <BurgerMenu onClick={() => setIsOpen(!isOpen)}>
+          <BurgerMenu
+            onClick={() => setIsOpen(!isOpen)}
+            role="button"
+            tabIndex={0}
+            aria-expanded={isOpen}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            data-testid="menu-toggle"
+          >
             <motion.div
               variants={menu}
               animate={isOpen ? 'open' : 'closed'}
@@ -32,7 +39,7 @@ const Header = () => {
             <Image src={ic_bars} alt="bars" />
           </BurgerMenu>
         </LogoContainer>
-        <Nav className={isOpen ? 'active' : ''}>
+        <Nav className={isOpen ? 'active' : ''} data-testid="site-nav">
           {links.map((link, i) => (
             <AnimatedLink
               key={i}

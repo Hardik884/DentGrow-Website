@@ -37,12 +37,12 @@ export const faqData: FAQItem[] = [
   {
     question: 'What makes OraMedha different?',
     answer:
-      'OraMedha is designed around the way dental clinics actually operate. Instead of separating appointments, patient information, clinical workflows, billing and follow-ups across different systems, it connects them in one workflow and adds an intelligence layer that helps you see what needs attention and what to do next.',
+      'Appointments, patients, clinical records and billing are table stakes for a dental PMS. OraMedha brings those workflows together in a simpler experience, then adds an intelligence layer that surfaces what needs attention and helps you know what to do next. Instead of adding more information to manage, OraMedha turns what is already happening in your clinic into clear action.',
   },
   {
     question: 'What kind of clinics is OraMedha built for?',
     answer:
-      'OraMedha is built for both independent clinics and larger dental teams, with workflows that can adapt to the way different clinics operate.',
+      'OraMedha is built for dental clinics of all sizes — from solo and independent clinics to larger teams. The workflows stay simple for smaller clinics while giving growing teams the connected visibility and coordination they need.',
   },
   {
     question: 'How does OraMedha keep clinic data secure?',

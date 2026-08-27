@@ -115,6 +115,15 @@ export const MiddleImage = styled(Image)`
 export const RightImage = styled(Image)`
   width: 21.875rem;
   height: 13.875rem;
+  /* This box is LeftImage's own footprint (350x222), reused here so the
+     folded fan is symmetric — but the source behind it, panel_right, is a
+     wider 711x391 shot. Without object-fit the browser stretches it to
+     match the box, squeezing the appointments list horizontally. Cropping
+     it instead keeps the same box, so the fold and the open fan's geometry
+     are untouched, and anchoring top-left keeps the list's own header in
+     frame. */
+  object-fit: cover;
+  object-position: left top;
   transform: rotate(90deg);
   top: 65px;
   position: absolute;

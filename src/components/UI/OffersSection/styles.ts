@@ -97,8 +97,15 @@ export const ImageCtn = styled.div`
       height: 1.75rem;
     }
 
+    /*
+     * The source screenshots are small — 293 to 448px wide — so stretching
+     * one to 90% of the card (up to ~620px at this breakpoint) upscaled it
+     * as much as 2x and every label inside went soft. width: auto renders
+     * each shot at its own pixel size and lets max-width only ever shrink
+     * it, never grow it past what the source can carry sharply.
+     */
     img {
-      width: 90%;
+      width: auto;
       max-width: 90%;
       height: auto;
       margin: 0 auto;

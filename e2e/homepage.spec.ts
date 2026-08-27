@@ -28,8 +28,9 @@ test.describe('Homepage', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Visible copy only — internal asset paths (public/images/dentgrow/*)
-    // are retained by design and legitimately appear in image `src` urls.
+    // Visible copy and alt text only. Asset paths under public/images/
+    // carry no trace of the retired name either (see public/images/product/),
+    // but this test's job is what a visitor sees, not internal file names.
     const bodyText = await page.locator('body').innerText();
     expect(bodyText.toLowerCase()).not.toContain('dentgrow');
 

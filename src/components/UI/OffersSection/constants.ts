@@ -1,7 +1,7 @@
-import offer_queue from '../../../../public/images/dentgrow/offer_queue.png';
-import offer_patient from '../../../../public/images/dentgrow/offer_patient.png';
-import offer_chart from '../../../../public/images/dentgrow/offer_chart.png';
-import offer_revenue from '../../../../public/images/dentgrow/offer_revenue.png';
+import offer_queue from '../../../../public/images/product/offer_queue.png';
+import offer_patient from '../../../../public/images/product/offer_patient.png';
+import offer_chart from '../../../../public/images/product/offer_chart.png';
+import offer_billing from '../../../../public/images/product/offer_billing.png';
 
 // For desktop
 // Two distinct sentences, not one wrapped across two lines: the first states
@@ -47,9 +47,9 @@ export const offers = [
       'A dental chart, treatments and consent that stay attached to the patient rather than to a folder.',
   },
   {
-    illustration: offer_revenue,
+    illustration: offer_billing,
     title: 'Billing and payments',
-    alt: "OraMedha's revenue card showing the day's takings",
+    alt: "OraMedha's Billing & Payments screen, showing today's revenue and each patient's remaining balance",
     details:
       'Bills raised from the treatment that was actually done, with payments and outstanding balances tracked against it.',
   },

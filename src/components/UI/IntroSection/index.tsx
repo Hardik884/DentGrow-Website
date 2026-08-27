@@ -2,9 +2,9 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Edge, Edges, Title } from '../FinancialFreedom/styles';
-import panel_centre from '../../../../public/images/dentgrow/panel_centre.png';
-import panel_left from '../../../../public/images/dentgrow/panel_left.png';
-import panel_right from '../../../../public/images/dentgrow/panel_right.png';
+import panel_centre from '../../../../public/images/product/panel_centre.png';
+import panel_left from '../../../../public/images/product/panel_left.png';
+import panel_right from '../../../../public/images/product/panel_right.png';
 import {
   Wrapper,
   Inner,

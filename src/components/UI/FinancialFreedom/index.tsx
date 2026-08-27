@@ -15,8 +15,8 @@ import RevealCover from '@/components/Common/RevealCover';
 import { Div } from '../Featured/styles';
 import { imageVariants } from '../Featured';
 import { useIsMobile } from '../../../../libs/useIsMobile';
-import clinical_banner from '../../../../public/images/dentgrow/dentgrow-clinical-workflow.png';
-import clinical_banner_mobile from '../../../../public/images/dentgrow/clinical_banner_mobile.png';
+import clinical_banner from '../../../../public/images/product/clinical-workflow.png';
+import clinical_banner_mobile from '../../../../public/images/product/clinical_banner_mobile.png';
 import { SECTION_IDS } from '../../../../libs/useScrollToSection';
 import {
   desktopBriefNotePhrase,
@@ -58,13 +58,13 @@ const FinancialFreedom = () => {
             {isMobile ? (
               <Image
                 src={clinical_banner_mobile}
-                alt="A patient's record and dental chart in OraMedha"
+                alt="A patient record and dental chart in OraMedha, with per-tooth treatment status"
                 fill
               />
             ) : (
               <Image
                 src={clinical_banner}
-                alt="A patient's record and dental chart in OraMedha"
+                alt="A patient record and dental chart in OraMedha, with per-tooth treatment status"
                 fill
               />
             )}

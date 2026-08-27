@@ -1,5 +1,5 @@
-import brain_attention from '../../../../public/images/dentgrow/brain_attention.png';
-import brain_action from '../../../../public/images/dentgrow/brain_action.png';
+import brain_attention from '../../../../public/images/product/brain_attention.png';
+import brain_action from '../../../../public/images/product/brain_action.png';
 
 /**
  * Both cards show the half of the real briefing that their copy describes: the
@@ -13,7 +13,7 @@ export const cardsInfo = [
     details:
       'OraMedha continuously watches activity across the clinic and brings important issues to the surface before they get lost in the day-to-day',
     visual: brain_attention,
-    alt: "OraMedha's Needs attention list: unused chair time, and patients with planned treatment who have not booked their next visit",
+    alt: "OraMedha's Needs attention list: empty chair time today, and fewer new patients than usual",
   },
   {
     title: 'Know what to do next and take action on it',

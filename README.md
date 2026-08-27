@@ -130,6 +130,5 @@ the key or the access token.
 
 Every product visual is a screenshot of the real OraMedha application, captured
 with Playwright against a local development instance. See
-[DENTGROW_SCREENSHOTS.md](DENTGROW_SCREENSHOTS.md) for what was captured and
-where each image is used, and `scripts/build-dentgrow-assets.py` for the crops
-derived from them.
+[PRODUCT_SCREENSHOTS.md](PRODUCT_SCREENSHOTS.md) for what was captured and
+where each image is used.

@@ -76,6 +76,15 @@ export const ImageCtn = styled.div`
 
   img {
     width: 100%;
+    /*
+     * Without this, the flex context above leaves height unconstrained by
+     * width: next/image's own width/height attributes set the aspect ratio,
+     * but a flex item's implicit stretch can still resolve height to the
+     * image's raw intrinsic pixels instead of scaling with width — a squashed
+     * image, tall and pencil-thin. Explicit auto forces the proportional
+     * scale object-fit: contain assumes.
+     */
+    height: auto;
     object-fit: contain;
   }
 

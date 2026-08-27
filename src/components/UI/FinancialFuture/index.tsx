@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
-import brain_banner from '../../../../public/images/dentgrow/dentgrow-business-brain.png';
-import brain_banner_mobile from '../../../../public/images/dentgrow/brain_banner_mobile.png';
+import brain_banner from '../../../../public/images/product/business-brain-daily.png';
+import brain_banner_mobile from '../../../../public/images/product/brain_banner_mobile.png';
 import {
   Wrapper,
   Inner,

@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
-import workspace_banner from '../../../../public/images/dentgrow/dentgrow-main-workspace.png';
-import workspace_banner_mobile from '../../../../public/images/dentgrow/workspace_banner_mobile.png';
+import workspace_banner from '../../../../public/images/product/dashboard-workspace.png';
+import workspace_banner_mobile from '../../../../public/images/product/workspace_banner_mobile.png';
 import ParallaxText from '@/components/Common/ParallaxImages';
 import {
   Wrapper,
@@ -45,13 +45,13 @@ const Featured = () => {
             {isMobile ? (
               <Image
                 src={workspace_banner_mobile}
-                alt="The OraMedha dentist dashboard"
+                alt="OraMedha's Today's Dashboard, showing the day's appointments, KPIs and live queue"
                 fill
               />
             ) : (
               <Image
                 src={workspace_banner}
-                alt="The OraMedha dentist dashboard"
+                alt="OraMedha's Today's Dashboard, showing the day's appointments, KPIs and live queue"
                 fill
               />
             )}

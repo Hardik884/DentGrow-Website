@@ -1,5 +1,5 @@
 'use client';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { styled } from 'styled-components';
 
 export const Wrapper = styled.section`
@@ -77,101 +77,91 @@ export const HeaderMainText = styled.div`
 `;
 
 /**
- * The desktop fan. Rendered only above the breakpoint — see MobilePanels below
- * for what a phone gets instead — so everything in here is free to assume a
- * pointer and a wide row.
+ * The Operations showcase.
+ *
+ * This replaced a hover-driven fan: three panels folded flat behind one
+ * another, unfolding on hover of the centre card. Two problems with it. It was
+ * hover-only, so it never opened on a touch device at all; and neither the
+ * left panel nor the centre one carried any size of its own, so each rendered
+ * at its source file's intrinsic pixels — the navigation rail came out
+ * 445x1000 and sat squarely on top of the section's own heading, which read
+ * only as "Le … os".
+ *
+ * What replaced it is a composed product shot, laid out the same way at every
+ * width: the day's appointments leading at full width, the figures and the
+ * navigation as a supporting pair beneath. One arrangement, three sizes.
  */
-export const CardsContainer = styled.div`
+export const Showcase = styled(motion.div)`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  margin-bottom: 7.77rem;
+  gap: 1rem;
   width: 100%;
-`;
+  /*
+   * The deliberate ceiling. The composition is centred in a 1440px row and
+   * stops well short of it, which is what keeps it reading as a preview of the
+   * product inside the section rather than as the section itself.
+   */
+  max-width: 44rem;
+  margin: 0 auto 7.77rem;
 
-export const LeftImage = styled(Image)`
-  /* Folded flat behind the centre card until it is hovered, as designed.
-     A resting offset was tried so the fan would advertise itself, and backed
-     out: these panels are screenshots, and a screenshot standing on its side
-     reads as broken UI rather than as the edge of a stacked card. */
-  transform: rotate(270deg);
-  position: absolute;
-  top: 64px;
-  transition: transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
-
-  &.active {
-    transform: rotate(70.281deg) translate(-50%, 60%);
-    top: 60%;
+  @media (max-width: 1024px) {
+    max-width: 34rem;
+    gap: 0.75rem;
   }
-`;
-
-export const MiddleImage = styled(Image)`
-  position: relative;
-  z-index: 3;
-  cursor: pointer;
-`;
-
-export const RightImage = styled(Image)`
-  width: 21.875rem;
-  height: 13.875rem;
-  /* This box is LeftImage's own footprint (350x222), reused here so the
-     folded fan is symmetric — but the source behind it, panel_right, is a
-     wider 711x391 shot. Without object-fit the browser stretches it to
-     match the box, squeezing the appointments list horizontally. Cropping
-     it instead keeps the same box, so the fold and the open fan's geometry
-     are untouched, and anchoring top-left keeps the list's own header in
-     frame. */
-  object-fit: cover;
-  object-position: left top;
-  transform: rotate(90deg);
-  top: 65px;
-  position: absolute;
-  transition: transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
-
-  &.active {
-    transform: rotate(-70.281deg) translate(50%, 60%);
-    top: 60%;
-  }
-`;
-
-/**
- * What a phone gets in place of the fan.
- *
- * The fan is a hover interaction — the outer panels sit folded behind the
- * centre one until the centre is hovered — and touch has no hover, so the phone
- * layout used to unfold it into three full-width screenshots in a column. Every
- * panel was visible, but at equal weight and nearly a thousand pixels of
- * scroll: three screenshots in a list rather than a composition.
- *
- * One panel leads instead and the other two sit under it as a compact pair, so
- * the section reads the way the fan does — a main view with its supporting
- * panels around it — in about a third of the height. Same three panels, same
- * card surface, same radius; only the arrangement is different.
- */
-export const MobilePanels = styled.div`
-  display: none;
 
   @media (max-width: 768px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* The pair sizes itself from its own aspect rather than being stretched to
-       whatever the taller of the two would be. */
-    align-items: start;
+    max-width: 100%;
     gap: 0.75rem;
-    width: 100%;
     margin-bottom: 4.5rem;
   }
 `;
 
-/* The card surface the panels are framed in — the page's own: #131313 behind a
-   hairline, with the screenshot's corners following the frame's. */
+/**
+ * The supporting pair, centred beneath the lead panel.
+ *
+ * Capped rather than stretched to the full width. The navigation rail is a
+ * 445px-wide crop of a 2x capture — the widest it exists at — so a slot much
+ * past 15rem would be asking a 445px source to fill 720 device pixels and the
+ * labels inside it would go soft. Capping the pair keeps both panels at their
+ * own resolution and insets them under the lead, which reads as composed
+ * rather than as a second full-width row.
+ */
+export const SecondaryRow = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 15rem));
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    /* On a phone the panels are already well under the cap, so they simply
+       share the row. */
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+`;
+
+/* The card the screenshots are framed in — the page's own surface: #131313
+   behind a hairline, with the shot's corners following the frame's. */
 const panelFrame = `
   position: relative;
   overflow: hidden;
   border-radius: 0.75rem;
   border: 1px solid var(--stroke, rgba(255, 255, 255, 0.04));
   background: #131313;
+`;
+
+/**
+ * The lead panel: the day's appointments, across the full width of the
+ * composition. Rendered at its own aspect, so nothing is cropped and nothing
+ * is stretched. The shadow is the only depth cue — enough to sit it a layer
+ * above the pair below without tilting or overlapping anything.
+ */
+export const PrimaryPanel = styled.div`
+  ${panelFrame}
+  width: 100%;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 
   img {
     display: block;
@@ -180,27 +170,22 @@ const panelFrame = `
   }
 `;
 
-export const PrimaryPanel = styled.div`
-  ${panelFrame}
-  grid-column: 1 / -1;
-`;
-
 /**
  * The two supporting panels, side by side under the lead.
  *
- * Each is a fixed, shared slot with the screenshot filling it from the top
- * left, so the pair reads as one row of cards rather than as two more
- * screenshots at two more sizes. The crop is deliberate: what is worth seeing
- * at this size — the day's figures, the top of the workflow list — is at the
- * top of both shots.
+ * All three sources are cropped to this same 350/222 shape, so the frame's
+ * cover is a no-op on every one of them: nothing is cropped at render time and
+ * no figure is cut through the middle. The crop that got them there was
+ * deliberate — the navigation rail is a tall strip and the figures are a wide
+ * band, and neither would sit in a shared row at its own aspect.
  */
 export const SecondaryPanel = styled.div`
   ${panelFrame}
-  /* The figures panel's own shape, so it lands in its slot uncropped at every
-     width and the taller navigation shot is the only one the frame trims. */
   aspect-ratio: 350 / 222;
 
   img {
+    display: block;
+    width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: left top;

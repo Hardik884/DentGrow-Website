@@ -54,9 +54,17 @@ All files live in `public/images/product/`.
 | `offer_patient.png` | Patient Profile (Priya Nair) — header + treatments | "Patients and history" card |
 | `offer_chart.png` | Dental Chart — both arches + legend | "Clinical records" card |
 | `offer_billing.png` | Billing & Payments — revenue + remaining balances | "Billing and payments" card |
-| `panel_left.png` | Today's Dashboard — KPI tiles | Operations, fanned panel (left / "today's numbers") |
-| `panel_centre.png` | Today's Dashboard — the nav rail | Operations, fanned panel (centre / navigation) |
-| `panel_right.png` | Appointments — the list | Operations, fanned panel (right / "today's appointments") |
+| `panel_right.png` | Appointments — the list | Operations, lead panel |
+| `panel_left.png` | Today's Dashboard — the dentist chip and KPI tiles | Operations, supporting panel ("today's numbers") |
+| `panel_centre.png` | Today's Dashboard — the nav rail | Operations, supporting panel (navigation) |
+
+### Crop aspects
+
+The four `offer_*` previews are cropped to a common ~1.45 aspect and the three
+Operations `panel_*` panels to the frame's own 350/222, so each set renders at
+one consistent size and the frames crop nothing further at render time. Changing
+one of these crops means matching its set's aspect, or the card it sits in will
+start cropping it.
 
 The three full-bleed desktop banners (`dashboard-workspace.png`,
 `clinical-workflow.png`, `business-brain-daily.png`) are used as-is: their

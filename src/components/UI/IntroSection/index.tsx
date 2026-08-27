@@ -1,6 +1,6 @@
 'use client';
-import { useState } from 'react';
 import Image from 'next/image';
+import { useReducedMotion } from 'framer-motion';
 import { Edge, Edges, Title } from '../FinancialFreedom/styles';
 import panel_centre from '../../../../public/images/product/panel_centre.png';
 import panel_left from '../../../../public/images/product/panel_left.png';
@@ -10,12 +10,9 @@ import {
   Inner,
   Header,
   HeaderMainText,
-  CardsContainer,
-  LeftImage,
-  MiddleImage,
-  RightImage,
-  MobilePanels,
+  Showcase,
   PrimaryPanel,
+  SecondaryRow,
   SecondaryPanel,
 } from './styles';
 import { MaskText } from '@/components';
@@ -30,7 +27,36 @@ import {
 
 const IntroSection = () => {
   const isMobile = useIsMobile();
-  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const reduceMotion = useReducedMotion();
+
+  /*
+   * One movement, once: the composition fades up into place and then holds.
+   *
+   * It replaced a hover-driven fan that unfolded three rotated panels — an
+   * effect the reader had to find, that a touch device could never trigger,
+   * and that drew attention to itself rather than to the product. A single
+   * short rise reads as the section settling, which is all it needs to do.
+   *
+   * Under prefers-reduced-motion the travel is dropped entirely and only the
+   * fade remains, so nothing on screen moves.
+   *
+   * `y` is declared in both cases rather than omitted from the reduced one.
+   * useReducedMotion resolves after the first render, so the initial pass can
+   * still lay the panel down 24px low; a variant that then never mentions `y`
+   * gives framer-motion nothing to animate back, and the composition settles
+   * permanently off-position. Naming it 0 corrects that on the same pass.
+   */
+  const travel = reduceMotion ? 0 : 24;
+  const showcaseReveal = {
+    hidden: { opacity: 0, y: travel },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: reduceMotion
+        ? { duration: 0.25, ease: 'linear' }
+        : { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
 
   return (
     <Wrapper>
@@ -52,46 +78,39 @@ const IntroSection = () => {
           </HeaderMainText>
         </Header>
         {/*
-          Two compositions of the same three panels, one per layout.
-
-          The fan below is driven by hovering the centre card, which a phone
-          cannot do, so the breakpoint picks between them rather than trying to
-          reflow one into the other — the desktop markup is untouched, and the
-          phone gets a composition built for it: the day's appointments leading,
-          the figures and the workflow as a compact pair underneath.
+          One composition at every width — the grid does the reflowing, so
+          there is no second markup path for a phone to hydrate into.
         */}
-        {isMobile ? (
-          <MobilePanels>
-            <PrimaryPanel>
-              <Image src={panel_right} alt="Today's appointments in OraMedha" />
-            </PrimaryPanel>
-            <SecondaryPanel>
-              <Image src={panel_left} alt="Today's numbers in OraMedha" />
-            </SecondaryPanel>
-            <SecondaryPanel>
-              <Image src={panel_centre} alt="OraMedha's navigation" />
-            </SecondaryPanel>
-          </MobilePanels>
-        ) : (
-          <CardsContainer>
-            <LeftImage
-              className={isHovered ? 'active' : ''}
-              src={panel_left}
-              alt="Today's numbers in OraMedha"
-            />
-            <MiddleImage
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-              src={panel_centre}
-              alt="OraMedha's navigation"
-            />
-            <RightImage
-              className={isHovered ? 'active' : ''}
+        <Showcase
+          variants={showcaseReveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <PrimaryPanel>
+            <Image
               src={panel_right}
-              alt="Today's appointments in OraMedha"
+              alt="Today's appointments in OraMedha, with the treating doctor, time and status for each"
+              sizes="(max-width: 768px) 90vw, 44rem"
             />
-          </CardsContainer>
-        )}
+          </PrimaryPanel>
+          <SecondaryRow>
+            <SecondaryPanel>
+              <Image
+                src={panel_left}
+                alt="OraMedha's figures for the day: appointments booked, patients seen, no-shows and revenue"
+                sizes="(max-width: 768px) 45vw, 15rem"
+              />
+            </SecondaryPanel>
+            <SecondaryPanel>
+              <Image
+                src={panel_centre}
+                alt="OraMedha's navigation, listing the areas of the clinic it covers"
+                sizes="(max-width: 768px) 45vw, 15rem"
+              />
+            </SecondaryPanel>
+          </SecondaryRow>
+        </Showcase>
         <Edges>
           {edges.map((edge, i) => (
             <Edge key={i}>

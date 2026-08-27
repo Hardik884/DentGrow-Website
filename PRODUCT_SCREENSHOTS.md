@@ -54,17 +54,20 @@ All files live in `public/images/product/`.
 | `offer_patient.png` | Patient Profile (Priya Nair) — header + treatments | "Patients and history" card |
 | `offer_chart.png` | Dental Chart — both arches + legend | "Clinical records" card |
 | `offer_billing.png` | Billing & Payments — revenue + remaining balances | "Billing and payments" card |
-| `panel_right.png` | Appointments — the list | Operations, lead panel |
-| `panel_left.png` | Today's Dashboard — the dentist chip and KPI tiles | Operations, supporting panel ("today's numbers") |
-| `panel_centre.png` | Today's Dashboard — the nav rail | Operations, supporting panel (navigation) |
+| `panel_right.png` | Appointments — the list | Operations, the section's single panel |
 
 ### Crop aspects
 
-The four `offer_*` previews are cropped to a common ~1.45 aspect and the three
-Operations `panel_*` panels to the frame's own 350/222, so each set renders at
-one consistent size and the frames crop nothing further at render time. Changing
-one of these crops means matching its set's aspect, or the card it sits in will
-start cropping it.
+The four `offer_*` previews are cropped to a common ~1.45 aspect, so the set
+renders at one consistent size and the cards crop nothing further at render
+time. Changing one of them means matching that aspect, or the card it sits in
+will start cropping it. `panel_right.png` is shown at its own aspect and is not
+cropped by its frame.
+
+Operations previously also carried a figures tile and a navigation tile
+(`panel_left.png`, `panel_centre.png`) as a supporting pair under the schedule.
+Both were dropped — they repeated what the section's own copy says — and their
+files removed.
 
 The three full-bleed desktop banners (`dashboard-workspace.png`,
 `clinical-workflow.png`, `business-brain-daily.png`) are used as-is: their

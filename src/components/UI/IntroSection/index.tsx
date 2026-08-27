@@ -2,8 +2,6 @@
 import Image from 'next/image';
 import { useReducedMotion } from 'framer-motion';
 import { Edge, Edges, Title } from '../FinancialFreedom/styles';
-import panel_centre from '../../../../public/images/product/panel_centre.png';
-import panel_left from '../../../../public/images/product/panel_left.png';
 import panel_right from '../../../../public/images/product/panel_right.png';
 import {
   Wrapper,
@@ -12,8 +10,6 @@ import {
   HeaderMainText,
   Showcase,
   PrimaryPanel,
-  SecondaryRow,
-  SecondaryPanel,
 } from './styles';
 import { MaskText } from '@/components';
 import { useIsMobile } from '../../../../libs/useIsMobile';
@@ -78,8 +74,9 @@ const IntroSection = () => {
           </HeaderMainText>
         </Header>
         {/*
-          One composition at every width — the grid does the reflowing, so
-          there is no second markup path for a phone to hydrate into.
+          One panel, at every width. A figures tile and a navigation tile used
+          to sit under it as a supporting pair; they carried nothing the copy
+          below doesn't already say, so the day's schedule stands on its own.
         */}
         <Showcase
           variants={showcaseReveal}
@@ -94,22 +91,6 @@ const IntroSection = () => {
               sizes="(max-width: 768px) 90vw, 44rem"
             />
           </PrimaryPanel>
-          <SecondaryRow>
-            <SecondaryPanel>
-              <Image
-                src={panel_left}
-                alt="OraMedha's figures for the day: appointments booked, patients seen, no-shows and revenue"
-                sizes="(max-width: 768px) 45vw, 15rem"
-              />
-            </SecondaryPanel>
-            <SecondaryPanel>
-              <Image
-                src={panel_centre}
-                alt="OraMedha's navigation, listing the areas of the clinic it covers"
-                sizes="(max-width: 768px) 45vw, 15rem"
-              />
-            </SecondaryPanel>
-          </SecondaryRow>
         </Showcase>
         <Edges>
           {edges.map((edge, i) => (

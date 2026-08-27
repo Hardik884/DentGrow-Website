@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { styled } from 'styled-components';
 
 export const Wrapper = styled.footer`
@@ -184,6 +185,29 @@ export const FooterBottom = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+  }
+`;
+
+/* A real route, not an in-page anchor, so it is a plain flex row rather than
+   the LinksContainer's <ul> — there is only ever the one entry here. */
+export const LegalLinks = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+`;
+
+export const LegalLink = styled(Link)`
+  ${footerAction}
+  color: #efefef;
+  font-size: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+  }
 `;
 
 export const CopyRight = styled.div`

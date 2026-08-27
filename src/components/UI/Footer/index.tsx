@@ -66,6 +66,8 @@ import {
   FooterButton,
   FooterBottom,
   CopyRight,
+  LegalLinks,
+  LegalLink,
 } from './styles';
 
 const Footer = () => {
@@ -129,6 +131,9 @@ const Footer = () => {
               <Image src={ic_copyright} alt="" aria-hidden />
               OraMedha
             </CopyRight>
+            <LegalLinks>
+              <LegalLink href="/privacy">Privacy & Policy</LegalLink>
+            </LegalLinks>
           </FooterBottom>
         </FooterMainContent>
       </Inner>

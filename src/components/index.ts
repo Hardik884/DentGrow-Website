@@ -14,3 +14,4 @@ export { default as Footer } from './UI/Footer';
 export { default as Preloader } from './UI/Preloader';
 export { default as MaskText } from './Common/MaskText';
 export { default as TrustSection } from './UI/TrustSection';
+export { default as PrivacyPolicy } from './UI/PrivacyPolicy';

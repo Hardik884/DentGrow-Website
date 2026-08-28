@@ -4,6 +4,7 @@ import {
   Wrapper,
   Inner,
   Header,
+  HeaderMainText,
   Offers,
   OfferCard,
   ImageCtn,
@@ -14,6 +15,7 @@ import { useIsMobile } from '../../../../libs/useIsMobile';
 import {
   desktopHeaderPhrases,
   desktopParagraphPhrase,
+  eyebrow,
   mobileParagraphPhrase,
   offers,
 } from './constants';
@@ -24,13 +26,16 @@ const OffersSection = () => {
     <Wrapper>
       <Inner>
         <Header>
-          <MaskText phrases={desktopHeaderPhrases} tag="h1" />
+          <h3>{eyebrow}</h3>
+          <HeaderMainText>
+            <MaskText phrases={desktopHeaderPhrases} tag="h1" />
 
-          {isMobile ? (
-            <MaskText phrases={mobileParagraphPhrase} tag="p" />
-          ) : (
-            <MaskText phrases={desktopParagraphPhrase} tag="p" />
-          )}
+            {isMobile ? (
+              <MaskText phrases={mobileParagraphPhrase} tag="p" />
+            ) : (
+              <MaskText phrases={desktopParagraphPhrase} tag="p" />
+            )}
+          </HeaderMainText>
         </Header>
         <Offers>
           {offers.slice(0, 2).map((offer, i) => (

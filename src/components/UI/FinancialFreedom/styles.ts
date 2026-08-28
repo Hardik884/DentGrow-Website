@@ -26,10 +26,17 @@ export const Header = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
   max-width: 56rem;
   margin: 0 auto 7.75rem;
   text-align: center;
+
+  h3 {
+    color: var(--jade-legible);
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
 
   h1 {
     font-size: 4.75rem;
@@ -55,6 +62,17 @@ export const Header = styled.header`
       font-size: 1rem;
       line-height: 1.5rem;
     }
+  }
+`;
+
+export const HeaderMainText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
   }
 `;
 

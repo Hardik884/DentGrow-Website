@@ -4,6 +4,7 @@ import {
   Wrapper,
   Inner,
   Header,
+  HeaderMainText,
   BannerCtn,
   Edges,
   Edge,
@@ -23,6 +24,7 @@ import {
   desktopHeaderPhrase,
   desktopParagraphPhrase,
   edges,
+  eyebrow,
   mobileBriefNotePhrase,
   mobileHeaderPhrase,
   mobileParagraphPhrase,
@@ -35,17 +37,20 @@ const FinancialFreedom = () => {
     <Wrapper id={SECTION_IDS.solutions}>
       <Inner>
         <Header>
-          {isMobile ? (
-            <>
-              <MaskText phrases={mobileHeaderPhrase} tag="h1" />
-              <MaskText phrases={mobileParagraphPhrase} tag="p" />
-            </>
-          ) : (
-            <>
-              <MaskText phrases={desktopHeaderPhrase} tag="h1" />
-              <MaskText phrases={desktopParagraphPhrase} tag="p" />
-            </>
-          )}
+          <h3>{eyebrow}</h3>
+          <HeaderMainText>
+            {isMobile ? (
+              <>
+                <MaskText phrases={mobileHeaderPhrase} tag="h1" />
+                <MaskText phrases={mobileParagraphPhrase} tag="p" />
+              </>
+            ) : (
+              <>
+                <MaskText phrases={desktopHeaderPhrase} tag="h1" />
+                <MaskText phrases={desktopParagraphPhrase} tag="p" />
+              </>
+            )}
+          </HeaderMainText>
         </Header>
         <BannerCtn>
           <RevealCover />

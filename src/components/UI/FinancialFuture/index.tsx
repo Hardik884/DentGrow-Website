@@ -6,6 +6,7 @@ import {
   Wrapper,
   Inner,
   Header,
+  HeaderMainText,
   CardContainer,
   Card,
   TextCtn,
@@ -24,6 +25,7 @@ import {
   cardsInfo,
   desktopHeaderPhrase,
   desktopParagraphPhrase,
+  eyebrow,
   mobileHeaderPhrase,
   mobileParagraphPhrase,
   stats,
@@ -36,17 +38,20 @@ const FinancialFuture = () => {
     <Wrapper>
       <Inner>
         <Header>
-          {isMobile ? (
-            <>
-              <MaskText phrases={mobileHeaderPhrase} tag="h1" />
-              <MaskText phrases={mobileParagraphPhrase} tag="p" />
-            </>
-          ) : (
-            <>
-              <MaskText phrases={desktopHeaderPhrase} tag="h1" />
-              <MaskText phrases={desktopParagraphPhrase} tag="p" />
-            </>
-          )}
+          <h3>{eyebrow}</h3>
+          <HeaderMainText>
+            {isMobile ? (
+              <>
+                <MaskText phrases={mobileHeaderPhrase} tag="h1" />
+                <MaskText phrases={mobileParagraphPhrase} tag="p" />
+              </>
+            ) : (
+              <>
+                <MaskText phrases={desktopHeaderPhrase} tag="h1" />
+                <MaskText phrases={desktopParagraphPhrase} tag="p" />
+              </>
+            )}
+          </HeaderMainText>
         </Header>
         <CardContainer>
           {cardsInfo.map((info, i) => (

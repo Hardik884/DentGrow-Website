@@ -2,6 +2,11 @@ import ic_identification from '../../../../public/svgs/ic_identification.svg';
 import ic_circle_stack from '../../../../public/svgs/ic_circle_stack.svg';
 import ic_document_duplicate from '../../../../public/svgs/ic_document_duplicate.svg';
 
+// Same eyebrow-plus-headline shape as the rest of the page (see
+// SimplicitySection, TrustSection): names this as the clinical detail
+// underneath the connected workflow and the intelligence layered on it.
+export const eyebrow = 'Clinical';
+
 // For desktop
 export const desktopHeaderPhrase = ['Treat with context'];
 export const desktopParagraphPhrase = [

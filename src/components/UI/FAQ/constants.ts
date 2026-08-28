@@ -45,6 +45,11 @@ export const faqData: FAQItem[] = [
       'OraMedha is built for dental clinics of all sizes — from solo and independent clinics to larger teams. The workflows stay simple for smaller clinics while giving growing teams the connected visibility and coordination they need.',
   },
   {
+    question: 'What does OraMedha mean?',
+    answer:
+      'OraMedha brings together two ideas: "Ora", inspired by oral and dental care, and "Medha", a Sanskrit word associated with intelligence, wisdom and understanding. Together, the name reflects what we\'re building — intelligence and clarity brought to the way dental clinics work.',
+  },
+  {
     question: 'How does OraMedha keep clinic data secure?',
     answer:
       'Through role-based access and clinic-level data isolation. Every record belongs to a clinic, and what a dentist, a receptionist or a patient can each read and change is defined per role — both enforced in the database itself, not only in the interface.',

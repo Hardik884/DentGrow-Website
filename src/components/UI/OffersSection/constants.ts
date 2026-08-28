@@ -3,6 +3,11 @@ import offer_patient from '../../../../public/images/product/offer_patient.png';
 import offer_chart from '../../../../public/images/product/offer_chart.png';
 import offer_billing from '../../../../public/images/product/offer_billing.png';
 
+// Same eyebrow-plus-headline shape as the sections below it (see
+// SimplicitySection, TrustSection): a short section identifier above the
+// headline, in the page's existing green-eyebrow style.
+export const eyebrow = 'Connected workflow';
+
 // For desktop
 // Two distinct sentences, not one wrapped across two lines: the first states
 // the scope, the second names what holds it together. MaskText already

@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('Simplicity section', () => {
-  test('sits between the connected-workflow section and the Action Layer', async ({
+  test('sits between the Action Layer and the clinical section', async ({
     page,
   }) => {
     await page.goto('/');
@@ -22,15 +22,18 @@ test.describe('Simplicity section', () => {
       const headings = Array.from(document.querySelectorAll('h1')).map(
         (h) => h.textContent?.trim() ?? ''
       );
+      const actionLayerIndex = headings.findIndex((t) => t.includes('do next.'));
       const simplicityIndex = headings.findIndex((t) =>
         t.includes('Nothing complicated.')
       );
-      const actionLayerIndex = headings.findIndex((t) => t.includes('do next.'));
-      return { simplicityIndex, actionLayerIndex };
+      const clinicalIndex = headings.findIndex((t) => t.includes('Treat with context'));
+      return { actionLayerIndex, simplicityIndex, clinicalIndex };
     });
 
-    expect(order.simplicityIndex).toBeGreaterThan(-1);
     expect(order.actionLayerIndex).toBeGreaterThan(-1);
-    expect(order.simplicityIndex).toBeLessThan(order.actionLayerIndex);
+    expect(order.simplicityIndex).toBeGreaterThan(-1);
+    expect(order.clinicalIndex).toBeGreaterThan(-1);
+    expect(order.actionLayerIndex).toBeLessThan(order.simplicityIndex);
+    expect(order.simplicityIndex).toBeLessThan(order.clinicalIndex);
   });
 });

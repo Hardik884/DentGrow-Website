@@ -18,10 +18,17 @@ export const Header = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
   text-align: center;
   max-width: 56rem;
   margin: 0 auto 6.75rem;
+
+  h3 {
+    color: var(--jade-legible);
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
 
   h1 {
     font-size: 4.75rem;
@@ -45,6 +52,17 @@ export const Header = styled.header`
       font-size: 1rem;
       line-height: 1.5rem;
     }
+  }
+`;
+
+export const HeaderMainText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
   }
 `;
 
@@ -127,6 +145,11 @@ export const TextCtn = styled.div`
   flex-direction: column;
   gap: 1rem;
   margin-top: auto;
+  /* Never the slot that gives, only the image above it. Without this a flex
+     item shrinks below its content size once the row runs short on room,
+     which is what let the card's fixed height clip the copy in the first
+     place. */
+  flex-shrink: 0;
 
   h2 {
     font-size: 2rem;
@@ -213,7 +236,18 @@ export const Offers = styled.div`
 
 export const OfferCard = styled.div`
   overflow: hidden;
-  height: 31.25rem;
+  /*
+   * A floor, not a fixed size. \`height\` pinned every card to exactly 500px
+   * regardless of what the copy inside needed — the image slot (\`flex: 1;
+   * min-height: 0\`) shrinks to make room for the text, but the text slot
+   * (\`TextCtn\`) has no such protection and, past a certain content length,
+   * shrank below its own line height and lost lines to this \`overflow:
+   * hidden\`, the Billing card among them. \`min-height\` keeps every card at
+   * today's 500px whenever the content already fits it — which is every card
+   * today, so nothing here changes what renders — and lets the card grow
+   * past it instead of clipping if the content ever needs more.
+   */
+  min-height: 31.25rem;
   border-radius: 0.75rem;
   border: 1px solid var(--stroke, rgba(255, 255, 255, 0.04));
   display: flex;
@@ -244,6 +278,7 @@ export const OfferCard = styled.div`
      * much of the copy \`overflow: hidden\` would cut off.
      */
     height: auto;
+    min-height: 0;
     padding-bottom: 0.5rem;
   }
 `;

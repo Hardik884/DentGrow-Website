@@ -17,14 +17,15 @@ export default function Home() {
       <HeroSection />
       <Featured />
       <OffersSection />
-      {/* A short brand beat — simple, not another feature — before the page
-          starts layering intelligence on top of the connected workflow. */}
-      <SimplicitySection />
-      {/* Intelligence / Action Layer now leads Treat with context, so the
-          narrative sees the whole connected workflow before it sees the
-          intelligence layered on top of it, and only then the clinical
-          detail underneath. */}
+      {/* Action Layer follows the connected workflow directly, so the page
+          sees the whole workflow before it sees the intelligence layered on
+          top of it. */}
       <FinancialFuture />
+      {/* A short brand beat — simple, not another feature — right after the
+          Action Layer, so the page states plainly that the intelligence
+          just shown didn't make the product harder to use, before the
+          clinical detail underneath it. */}
+      <SimplicitySection />
       <FinancilaFreedom />
       <IntroSection />
       <JoinSection />

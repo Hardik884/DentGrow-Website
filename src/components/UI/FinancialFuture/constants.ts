@@ -1,6 +1,11 @@
 import brain_attention from '../../../../public/images/product/brain_attention.png';
 import brain_action from '../../../../public/images/product/brain_action.png';
 
+// Same eyebrow-plus-headline shape as the rest of the page (see
+// SimplicitySection, TrustSection): names this as the intelligence layer
+// sitting on top of the connected workflow above it.
+export const eyebrow = 'Action layer';
+
 /**
  * Both cards show the half of the real briefing that their copy describes: the
  * left card the "Needs attention" column, the right card the "What to do"

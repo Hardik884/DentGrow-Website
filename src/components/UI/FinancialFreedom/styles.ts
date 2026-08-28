@@ -1,11 +1,19 @@
 'use client';
 import { styled } from 'styled-components';
 
+/**
+ * 11.25rem was tuned for the gap after FinancialFuture's own banner
+ * screenshot, when this section followed it directly. SimplicitySection now
+ * sits in between and already carries its own 6rem (4rem mobile) of bottom
+ * padding, so that full margin was stacking on top of it — over 17rem of
+ * empty space between two sections with nothing in it. A small top margin
+ * here is enough on top of Simplicity's own padding.
+ */
 export const Wrapper = styled.section`
-  margin-top: 11.25rem;
+  margin-top: 2rem;
 
   @media (max-width: 768px) {
-    margint-top: 6.25rem;
+    margin-top: 1.5rem;
   }
 `;
 

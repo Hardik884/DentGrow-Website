@@ -58,9 +58,6 @@ export const sections: PolicySection[] = [
         'OraMedha is the platform and product referred to throughout this policy. This policy is published on the OraMedha marketing website by the team that builds and operates OraMedha.'
       ),
       p(
-        '[Placeholder — to be completed by the site operator before publication: the full registered legal entity name, registered address, and any applicable business registration number under which OraMedha is operated, if different from "OraMedha" itself.]'
-      ),
-      p(
         'Depending on context and applicable law, OraMedha acts in different capacities with respect to different information — sometimes as the party that decides why and how information is processed, and sometimes as a service provider acting on a dental clinic\'s instructions. Section 6 explains this distinction, because it determines who you should approach first with a question about your own information.'
       ),
     ],
@@ -365,11 +362,8 @@ export const sections: PolicySection[] = [
     title: 'Grievance / Privacy Contact',
     body: [
       p(
-        'If you have a question, a concern, or a grievance about how your information has been handled, or if you would like to exercise a right described in Section 11, you can reach us at:'
+        'If you have a question, a concern, or a grievance about how your information has been handled, or if you would like to exercise a right described in Section 11, use the "Contact" link in the footer of this website, which is the current channel we monitor for exactly this kind of request.'
       ),
-      list([
-        '[Placeholder — official privacy/grievance contact to be added by the site operator before publication. No privacy or grievance contact address currently exists in this project; this placeholder is intentional and should not be replaced with an invented address.]',
-      ]),
       p(
         'If your question concerns patient or clinical information held by a dental clinic that uses OraMedha, please contact that clinic directly in the first instance, as explained in Section 6 — they are best placed to act on it quickly, and are the party responsible for that information.'
       ),

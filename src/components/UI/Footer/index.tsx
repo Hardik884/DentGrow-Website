@@ -17,10 +17,15 @@ import {
  * channel. The remaining entries are labels, not links: they name who the
  * product is for, and are styled as plain text so nothing invites a click that
  * would go nowhere.
+ *
+ * The footer renders on every route, including `/privacy`, where these
+ * sections don't exist — so each href carries the homepage's own path rather
+ * than a bare hash. See libs/useScrollToSection for how that gets a visitor
+ * there and onto the right section either way.
  */
 type FooterEntry = {
   label: string;
-  /** A section on this page. */
+  /** A section on the homepage. */
   href?: string;
   /** Opens the demo dialog rather than navigating. */
   action?: 'demo';
@@ -30,9 +35,9 @@ const linksArr: { title: string; links: FooterEntry[] }[] = [
   {
     title: 'Product',
     links: [
-      { label: 'Product', href: `#${SECTION_IDS.product}` },
-      { label: 'Solutions', href: `#${SECTION_IDS.solutions}` },
-      { label: 'Security', href: `#${SECTION_IDS.security}` },
+      { label: 'Product', href: `/#${SECTION_IDS.product}` },
+      { label: 'Solutions', href: `/#${SECTION_IDS.solutions}` },
+      { label: 'Security', href: `/#${SECTION_IDS.security}` },
     ],
   },
   {

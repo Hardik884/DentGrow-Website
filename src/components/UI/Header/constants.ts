@@ -49,21 +49,26 @@ export const menu = {
   },
 };
 /**
- * The navigation. Each entry points at a section that exists on this page, so
- * every link has a real destination — there is no Pricing page to send anyone
- * to, so there is no Pricing link.
+ * The navigation. Each entry points at a section that exists on the
+ * homepage, so every link has a real destination — there is no Pricing page
+ * to send anyone to, so there is no Pricing link.
+ *
+ * The header renders on every route (see Layout), including `/privacy`,
+ * where these sections don't exist — so the href carries the homepage's own
+ * path rather than a bare hash. See libs/useScrollToSection for how that
+ * gets a visitor there and onto the right section either way.
  */
 export const links = [
   {
-    href: `#${SECTION_IDS.product}`,
+    href: `/#${SECTION_IDS.product}`,
     linkTo: 'Product',
   },
   {
-    href: `#${SECTION_IDS.solutions}`,
+    href: `/#${SECTION_IDS.solutions}`,
     linkTo: 'Solutions',
   },
   {
-    href: `#${SECTION_IDS.security}`,
+    href: `/#${SECTION_IDS.security}`,
     linkTo: 'Security',
   },
 ];

@@ -1,4 +1,5 @@
 'use client';
+import { MARK_SRC } from '@/components/Common/Logo/mark';
 import { styled } from 'styled-components';
 
 /**
@@ -70,13 +71,24 @@ export const Lockup = styled.div.withConfig({ componentId: 'dg-preloader-lockup'
 
 /* Pinned for the same reason as the header lockup's mark — see
    Common/Logo/styles.ts. */
-export const Mark = styled.svg.withConfig({
+export const Mark = styled.span.withConfig({
   componentId: 'dg-preloader-mark',
 })<{ $aspect: number }>`
+  display: block;
   height: 1em;
   width: ${({ $aspect }) => $aspect}em;
-  fill: var(--jade);
   flex-shrink: 0;
+  /* White, matching the header lockup — see Common/Logo/styles.ts for why
+     the mark is no longer painted --jade. */
+  background-color: var(--white);
+  -webkit-mask-image: url('${MARK_SRC}');
+  mask-image: url('${MARK_SRC}');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 `;
 
 /* The mask the letters rise out of. Its padding gives descenders room without

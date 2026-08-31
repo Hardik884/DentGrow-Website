@@ -10,11 +10,7 @@ import {
   Letter,
   SecondOverlay,
 } from './styles';
-import {
-  MARK_ASPECT,
-  MARK_PATH,
-  MARK_VIEWBOX,
-} from '@/components/Common/Logo/mark';
+import { MARK_ASPECT } from '@/components/Common/Logo/mark';
 
 const WORD = 'OraMedha'.split('');
 
@@ -40,7 +36,7 @@ const Preloader = ({
   setComplete: Dispatch<SetStateAction<boolean>>;
 }) => {
   const letters = useRef<HTMLSpanElement[]>([]);
-  const markRef = useRef<SVGSVGElement>(null);
+  const markRef = useRef<HTMLSpanElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const secondOverlayRef = useRef<HTMLDivElement>(null);
 
@@ -125,15 +121,7 @@ const Preloader = ({
       <Wrapper ref={wrapperRef} aria-hidden="true">
         <Inner>
           <Lockup>
-            <Mark
-              ref={markRef}
-              viewBox={MARK_VIEWBOX}
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              $aspect={MARK_ASPECT}
-            >
-              <path d={MARK_PATH} fillRule="evenodd" clipRule="evenodd" />
-            </Mark>
+            <Mark ref={markRef} $aspect={MARK_ASPECT} />
             <WordMask>
               {WORD.map((char, i) => (
                 <Letter

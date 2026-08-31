@@ -1,12 +1,14 @@
 'use client';
 import { Lockup, Mark, WordMark } from './styles';
-import { MARK_ASPECT, MARK_PATH, MARK_VIEWBOX } from './mark';
+import { MARK_ASPECT } from './mark';
 
 /**
  * The OraMedha lockup — the product's own mark plus the wordmark.
  *
- * Rendered inline rather than as an <img> so the wordmark uses the page font
- * and the mark inherits colour from CSS, the way the logo it replaces did.
+ * The wordmark is live text so it uses the page font, and the mark is painted
+ * through a CSS mask so it inherits colour from CSS — the same two properties
+ * the previous inline-SVG version had, with the mark now sourced from the app's
+ * raster artwork instead of a traced path.
  *
  * `size` is the mark's HEIGHT in px and is applied as the lockup's font-size;
  * everything inside is expressed in `em`. That means a call site can also
@@ -14,16 +16,8 @@ import { MARK_ASPECT, MARK_PATH, MARK_VIEWBOX } from './mark';
  * needing a second size prop threaded through.
  */
 const Logo = ({ size = 29 }: { size?: number }) => (
-  <Lockup style={{ fontSize: `${size}px` }}>
-    <Mark
-      viewBox={MARK_VIEWBOX}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      $aspect={MARK_ASPECT}
-    >
-      <path d={MARK_PATH} fillRule="evenodd" clipRule="evenodd" />
-    </Mark>
+  <Lockup style={{ fontSize: `${size}px` }} role="img" aria-label="OraMedha">
+    <Mark $aspect={MARK_ASPECT} aria-hidden="true" />
     <WordMark>OraMedha</WordMark>
   </Lockup>
 );

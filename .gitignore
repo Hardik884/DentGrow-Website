@@ -47,3 +47,8 @@ gcp-key*.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Intermediate full-screen product captures. The thirteen files the site
+# ships are derived from these into public/images/product/ by
+# scripts/crop-product-screenshots.mjs; the originals are large and reproducible.
+capture/

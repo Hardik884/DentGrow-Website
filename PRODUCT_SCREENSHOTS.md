@@ -76,13 +76,50 @@ browser does the cropping to whatever the container's actual size is — no
 second copy is stored. Every other file is a deliberate manual crop of its
 source capture, sized for the slot it fills.
 
-## What changed from the previous round
+## Reproducing them
 
-The prior screenshot set was captured against DentGrow-branded seed data and
-covered three screens (dashboard, clinical workflow, business brain). This
-round recaptures against the app's current OraMedha branding, adds three
-screens the marketing site didn't have real coverage for (patient history,
-billing & payments, and a dedicated appointments list — previously the
-"Billing and payments" card used a crop of the dashboard's revenue tile
-rather than the actual Billing & Payments screen), and replaces every prior
-file. No old DentGrow-branded screenshot remains anywhere in the repo.
+Both steps are committed, which they were not for the previous round — that set
+was shot by hand, so "re-shoot the screenshots" was an undocumented job:
+
+```bash
+node scripts/capture-product-screenshots.mjs   # six full screens  -> capture/
+node scripts/crop-product-screenshots.mjs      # thirteen shipped  -> public/images/product/
+```
+
+`capture/` is gitignored: it is large, and everything in it is reproducible.
+
+The crop script hard-codes each output size, because those are the sizes the
+site's slots were tuned against — the four `offer_*` previews in particular share
+a ~1.45 aspect so the card row renders at one consistent size. It also hard-codes
+each region in CSS pixels, and that is the one part of the pipeline that needs
+revisiting if the app's layout changes materially.
+
+## What changed in this round
+
+Recaptured against the app's new brand mark: every prior frame showed the retired
+tooth-and-arrow logo in the sidebar.
+
+Two data facts had to be right before the captures were worth keeping. Both are
+easy to miss and both quietly degrade the result rather than failing loudly:
+
+- The demo clinic's activity is shifted forward so the app's own "today" lands on
+  the densest seeded day (24 appointments) rather than a near-empty one.
+  **`queue_entries.queue_date` is a column in its own right, not derived from
+  `checked_in_at`**, so it has to be shifted too — miss it and the dashboard's
+  Live Queue renders "Queue is empty" while the database plainly has patients
+  waiting, which is exactly what happened on the first pass here.
+- The Next.js dev-tools bubble sits bottom-left and is the one thing in these
+  frames that is not the product. The capture script hides it.
+
+The frames also now show work that landed alongside the brand change: the Actions
+screen states severity in words rather than colour alone, carries a
+forward-looking "Next week is filling up slowly" finding, and labels ownership
+"Delegate".
+
+## The round before this one
+
+The prior set was captured against DentGrow-branded seed data and covered three
+screens (dashboard, clinical workflow, business brain). It was replaced by a
+round that recaptured against OraMedha branding and added three screens the site
+had no real coverage for — patient history, billing & payments, and a dedicated
+appointments list. No DentGrow-branded screenshot remains anywhere in the repo.

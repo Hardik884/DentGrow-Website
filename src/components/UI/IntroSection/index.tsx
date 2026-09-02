@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { useReducedMotion } from 'framer-motion';
 import { Edge, Edges, Title } from '../FinancialFreedom/styles';
-import panel_right from '../../../../public/images/product/panel_right.png';
+import appointments_workspace from '../../../../public/images/product/appointments-workspace.png';
 import {
   Wrapper,
   Inner,
@@ -86,7 +86,7 @@ const IntroSection = () => {
         >
           <PrimaryPanel>
             <Image
-              src={panel_right}
+              src={appointments_workspace}
               alt="Today's appointments in OraMedha, with the treating doctor, time and status for each"
               sizes="(max-width: 768px) 90vw, 44rem"
             />

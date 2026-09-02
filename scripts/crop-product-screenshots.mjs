@@ -154,28 +154,36 @@ const OFFER_ASPECT = 759 / 510; // offer_queue's, so the four stay consistent
 await region('dashboard', 'offer_queue',
   { x: 1080, y: 468, width: 392 }, [759, 510], 'Dashboard, Live Queue widget');
 
-// Patient header: name, age, phone, visit count, last visit, then the tab row and
-// the Treatments heading. The whole story of "patients and history" in 520px.
-await nativeRegion('patient-treatments', 'offer_patient',
-  { x: 236, y: 100, width: 520 }, OFFER_ASPECT, 'Priya Nair, header + treatments');
+// Each `y` below is chosen so the crop's BOTTOM EDGE lands in a gap rather than
+// through a row of text. Get that wrong and the preview ends on a half-cut line —
+// the frame reads as broken rather than as a detail of a larger screen, which is
+// exactly what the first version of these did.
 
-// Wide enough to carry six teeth per arch AND the status legend, which is what
-// makes the colour coding mean anything. Narrower dropped the legend; wider put
-// the heading under 11px.
+// Patient Profile heading, the header card, and the tab row. Ends in the gap
+// before "Treatments" rather than slicing that heading in half.
+await nativeRegion('patient-treatments', 'offer_patient',
+  { x: 236, y: 44, width: 520 }, OFFER_ASPECT, 'Priya Nair, profile header');
+
+// 690 wide is the narrowest that fits BOTH the "Dental Chart" heading and the
+// full status legend — the legend is what makes the tooth colouring mean
+// anything, and at 660 its last item was cut off the right edge.
 await nativeRegion('patient-chart', 'offer_chart',
-  { x: SIDEBAR, y: 496, width: 660 }, OFFER_ASPECT, 'Dental Chart, teeth + legend');
+  { x: SIDEBAR, y: 510, width: 690 }, OFFER_ASPECT, 'Dental Chart, teeth + legend');
 
 // The revenue headline, NOT the Remaining Balances list. Those rows put the
 // patient name and the amount owed ~1190 CSS px apart, so no crop tight enough to
 // be legible can hold both, and a list of names with the amounts sliced off is a
-// worse advert for billing than the day's takings in full.
+// worse advert for billing than the day's takings in full. From the page top, so
+// it ends on the clean upper edge of the Filters card.
 await nativeRegion('payments', 'offer_billing',
-  { x: 240, y: 100, width: 470 }, OFFER_ASPECT, 'Billing & Payments, revenue');
+  { x: 240, y: 0, width: 470 }, OFFER_ASPECT, 'Billing & Payments, revenue');
 
-// ── Operations' single panel ────────────────────────────────────────────────
-await region('appointments', 'panel_right',
-  // y clears the view-toggle row above the table; at 300 its bottom edge showed
-  // as a green sliver along the top of the crop.
-  { x: SIDEBAR, y: 352, width: 1392 }, [1900, 1200], 'Appointments, the list');
+// ── The Operations banner, under "Less front-desk chaos" ────────────────────
+// A whole screen at the same size as the dashboard banner, not a cropped panel.
+// The appointments capture is 1.40 wide where the banners are 1.670, so the crop
+// takes the top of it — the list runs far past the fold and the rows below add
+// nothing a banner can show at this scale.
+await region('appointments', 'appointments-workspace',
+  { x: 0, y: 0, width: 1680 }, [2600, 1557], 'Appointments, whole');
 
 console.log('\ndone');

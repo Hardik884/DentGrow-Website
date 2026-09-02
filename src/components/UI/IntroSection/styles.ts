@@ -95,15 +95,20 @@ export const HeaderMainText = styled.div`
 export const Showcase = styled(motion.div)`
   width: 100%;
   /*
-   * The deliberate ceiling. The panel is centred in a 1440px row and stops well
-   * short of it, which is what keeps it reading as a preview of the product
-   * inside the section rather than as the section itself.
+   * Full width, matching the dashboard banner at the top of the page.
+   *
+   * This used to stop at 44rem so the panel read as a preview inside the section
+   * rather than as the section itself. But that ceiling also shrank a whole
+   * application screen into 704px, which put its text on screen at roughly half
+   * size and made the panel the least legible thing on the page. Showing the
+   * appointments screen at banner width is the same trade the hero already makes,
+   * and it is the screen this section's copy is actually about.
    */
-  max-width: 44rem;
+  max-width: 100%;
   margin: 0 auto 7.77rem;
 
   @media (max-width: 1024px) {
-    max-width: 34rem;
+    max-width: 100%;
   }
 
   @media (max-width: 768px) {

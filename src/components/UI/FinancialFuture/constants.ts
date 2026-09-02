@@ -3,8 +3,9 @@ import brain_action from '../../../../public/images/product/brain_action.png';
 
 // Same eyebrow-plus-headline shape as the rest of the page (see
 // SimplicitySection, TrustSection): names this as the intelligence layer
-// sitting on top of the connected workflow above it.
-export const eyebrow = 'Action layer';
+// sitting on top of the connected workflow above it, and what it actually
+// does with what it finds — surfaces it, then turns it into action.
+export const eyebrow = 'Action and intelligence';
 
 /**
  * Both cards show the half of the real briefing that their copy describes: the

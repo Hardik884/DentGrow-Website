@@ -5,7 +5,9 @@ import ic_document_duplicate from '../../../../public/svgs/ic_document_duplicate
 // Same eyebrow-plus-headline shape as the rest of the page (see
 // SimplicitySection, TrustSection): names this as the clinical detail
 // underneath the connected workflow and the intelligence layered on it.
-export const eyebrow = 'Clinical';
+// "Clinical" alone named the category; the section is actually the chart,
+// the history and the plan, so the label says that instead.
+export const eyebrow = 'Clinical records';
 
 // For desktop
 export const desktopHeaderPhrase = ['Treat with context'];

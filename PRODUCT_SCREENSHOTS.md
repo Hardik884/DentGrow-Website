@@ -55,6 +55,7 @@ All files live in `public/images/product/`.
 | `offer_chart.png` | Dental Chart — both arches + legend | "Clinical records" card |
 | `offer_billing.png` | Billing & Payments — revenue + remaining balances | "Billing and payments" card |
 | `appointments-workspace.png` | Appointments (full capture, resized) | Operations, the full-width banner under "Less front-desk chaos" |
+| `appointments_banner_mobile.png` | Appointments, portrait crop | Operations, below 768px |
 
 ### Crop aspects
 
@@ -65,8 +66,25 @@ will start cropping it.
 
 `panel_right.png` is gone. Operations used to carry a cropped slice of the
 appointments list at 44rem, which shrank a whole screen to 704px and left its
-text at about half size; it now shows `appointments-workspace.png` full width,
-the same treatment as the dashboard banner.
+text at about half size. It now shows `appointments-workspace.png` in exactly the
+`Featured` banner's frame — 85rem wide, 35rem tall, `object-position: left top` —
+and reuses Featured's `imageVariants` and `RevealCover`, which is what the banner
+above it already imports. Verified: both render at 1360×560.
+
+35rem, not FinancialFreedom's 38.4375rem. The crop is anchored top-left, so a
+taller frame lengthens the section without showing any more of the screen.
+
+### Descenders and MaskText
+
+Every heading rendered through `MaskText` sits inside a `LineMask`, which is
+`overflow: hidden` around the line box. **A `line-height` smaller than the
+`font-size` therefore cuts glyphs off rather than merely crowding them.**
+
+Two card titles had `font-size: 2rem` against `line-height: 1.75rem` — 28px of
+line box for a 32px glyph — which sheared the descender off every title that had
+one: the y in "Billing and payments", the q in "Appointments and queue", the y in
+"Patients and history". Both are unitless `1.2` now. Keep any MaskText heading at
+or above ~1.15.
 
 ### The `offer_*` previews must be TIGHT crops
 

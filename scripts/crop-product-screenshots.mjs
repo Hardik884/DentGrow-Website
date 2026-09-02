@@ -185,5 +185,7 @@ await nativeRegion('payments', 'offer_billing',
 // nothing a banner can show at this scale.
 await region('appointments', 'appointments-workspace',
   { x: 0, y: 0, width: 1680 }, [2600, 1557], 'Appointments, whole');
+await region('appointments', 'appointments_banner_mobile',
+  { x: SIDEBAR, y: 0, width: 1022 }, [800, 900], 'Appointments, portrait');
 
 console.log('\ndone');

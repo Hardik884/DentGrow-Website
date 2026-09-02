@@ -96,7 +96,10 @@ export const TextCtn = styled.div`
   h3 {
     font-size: 2rem;
     font-weight: 500;
-    line-height: 1.75rem;
+    /* Same clipping bug as OffersSection's h2 — see the note there. 1.75rem gave
+       28px of line box to a 32px glyph inside a MaskText LineMask that is
+       overflow:hidden, so descenders were cut, not merely crowded. */
+    line-height: 1.2;
   }
 
   p {
@@ -111,7 +114,7 @@ export const TextCtn = styled.div`
 
     h3 {
       font-size: 1.5rem;
-      line-height: 1.75rem;
+      line-height: 1.2;
     }
 
     p {

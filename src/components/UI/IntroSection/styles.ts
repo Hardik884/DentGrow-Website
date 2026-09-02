@@ -1,5 +1,4 @@
 'use client';
-import { motion } from 'framer-motion';
 import { styled } from 'styled-components';
 
 export const Wrapper = styled.section`
@@ -77,63 +76,38 @@ export const HeaderMainText = styled.div`
 `;
 
 /**
- * The Operations showcase: the day's appointments, and nothing else.
+ * The banner frame, deliberately identical to the two screenshots above it.
  *
- * This replaced a hover-driven fan — three panels folded flat behind one
- * another, unfolding on hover of the centre card. Two problems with it. It was
- * hover-only, so it never opened on a touch device at all; and neither the
- * left panel nor the centre one carried any size of its own, so each rendered
- * at its source file's intrinsic pixels — the navigation rail came out
- * 445x1000 and sat squarely on top of the section's own heading, which read
- * only as "Le ... os".
+ * 35rem is Featured's height, not FinancialFreedom's 38.4375rem: this is the
+ * first screenshot on the page repeated, and the taller frame made the section
+ * run long without showing more of the screen — the crop is anchored top-left,
+ * so extra height only adds rows nobody reads at banner scale.
  *
- * A figures tile and a navigation tile briefly sat under the schedule as a
- * supporting pair. They were dropped: neither showed anything the three points
- * of copy below the section do not already say, and two small screenshots
- * competing under one large one is a busier composition than the section needs.
+ * The height itself lives on the shared `Div` from Featured/styles, which this
+ * wraps; everything here is the frame around it.
  */
-export const Showcase = styled(motion.div)`
+export const BannerCtn = styled.div`
+  position: relative;
   width: 100%;
-  /*
-   * Full width, matching the dashboard banner at the top of the page.
-   *
-   * This used to stop at 44rem so the panel read as a preview inside the section
-   * rather than as the section itself. But that ceiling also shrank a whole
-   * application screen into 704px, which put its text on screen at roughly half
-   * size and made the panel the least legible thing on the page. Showing the
-   * appointments screen at banner width is the same trade the hero already makes,
-   * and it is the screen this section's copy is actually about.
-   */
-  max-width: 100%;
+  max-width: 85rem;
   margin: 0 auto 7.77rem;
+  overflow: hidden;
+  border-radius: 0.75rem;
 
-  @media (max-width: 1024px) {
-    max-width: 100%;
+  img {
+    border-radius: 0.75rem;
+    object-fit: cover;
+    /* A screenshot, not a photograph: anchor the crop top-left so the
+       product's navigation and page header stay in frame at every width. */
+    object-position: left top;
   }
 
   @media (max-width: 768px) {
-    max-width: 100%;
+    border-radius: 0.5rem;
     margin-bottom: 4.5rem;
-  }
-`;
 
-/**
- * The panel the screenshot is framed in — the page's own surface: #131313
- * behind a hairline, with the shot's corners following the frame's. Rendered
- * at the image's own aspect, so nothing is cropped and nothing is stretched.
- */
-export const PrimaryPanel = styled.div`
-  position: relative;
-  overflow: hidden;
-  border-radius: 0.75rem;
-  border: 1px solid var(--stroke, rgba(255, 255, 255, 0.04));
-  background: #131313;
-  width: 100%;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
+    img {
+      border-radius: 0.5rem;
+    }
   }
 `;

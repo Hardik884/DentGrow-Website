@@ -149,7 +149,20 @@ export const TextCtn = styled.div`
   h2 {
     font-size: 2rem;
     font-weight: 500;
-    line-height: 1.75rem;
+    /*
+     * Must stay at or above ~1.15, and unitless.
+     *
+     * These headings render through MaskText, whose LineMask is
+     * overflow:hidden around the line box — so anything the line box does not
+     * contain is CUT OFF, not merely tight.
+     *
+     * This was 1.75rem: 28px of line box for a 32px glyph. It sheared the
+     * descender off every title that had one — the y in "Billing and payments",
+     * the q in "Appointments and queue", the y in "Patients and history".
+     * Unitless so the 768px override inherits the ratio rather than needing its
+     * own value.
+     */
+    line-height: 1.2;
   }
 
   p {

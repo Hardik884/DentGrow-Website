@@ -68,6 +68,36 @@ async function region(src, out, { x, y, width }, [outW, outH], label) {
   console.log(`${out}.png`.padEnd(28), `${outW}x${outH}`.padEnd(11), `<- ${label}`);
 }
 
+/**
+ * Crop a region and keep it at the capture's own resolution.
+ *
+ * For the tight `offer_*` previews. Resizing those up to the sizes the files
+ * used to be (2400-2850px wide) would be a 2.5x upscale of a 1040px crop — all
+ * the blur, none of the detail. What the layout needs is the ASPECT, because
+ * `ImageCtn` sizes by `max-height` with `object-fit: contain`; the pixel
+ * dimensions only have to clear the display size on a retina screen, and a
+ * ~1000px file against a ~394px slot clears it two and a half times over.
+ */
+async function nativeRegion(src, out, { x, y, width }, aspect, label) {
+  const image = sharp(`${IN}/${src}.png`);
+  const meta = await image.metadata();
+
+  const left = px(x);
+  const top = px(y);
+  const w = Math.min(px(width), meta.width - left);
+  const h = Math.min(Math.round(w / aspect), meta.height - top);
+
+  await sharp(`${IN}/${src}.png`)
+    .extract({ left, top, width: w, height: h })
+    .png({ compressionLevel: 9 })
+    .toFile(`${OUT}/${out}.png`);
+  console.log(
+    `${out}.png`.padEnd(28),
+    `${w}x${h}`.padEnd(11),
+    `${width} CSS px wide -> ${(394 / width).toFixed(2)}x on screen  <- ${label}`,
+  );
+}
+
 /** Resize a whole capture. Used where the capture's aspect already matches. */
 async function whole(src, out, [outW, outH], label) {
   await sharp(`${IN}/${src}.png`)
@@ -104,18 +134,43 @@ await region('business-brain', 'brain_action',
   { x: 876, y: 341, width: 596 }, [1188, 848], 'Actions, "What to do" column');
 
 // ── The four offer_* previews, all ~1.45 ────────────────────────────────────
+//
+// THESE MUST BE TIGHT CROPS, and that is the whole design constraint here.
+//
+// `ImageCtn` caps the preview at `max-height: min(17rem, 100%)`, so it renders
+// about 394x272 on screen however large the file is. The scale from crop to slot
+// is therefore 394 / (crop width in CSS px) — and the first version of these
+// cropped 1364-1650 CSS px of full-width layout into that slot, i.e. 0.24-0.29x,
+// which put 14px body text on screen at 3-4px. Unreadable, and it read as
+// "zoomed out and stretched".
+//
+// offer_queue was the one that always worked, because a queue widget is only 392
+// CSS px wide: it lands at ~1.0x and its text stays full size. The other three
+// now follow that lead — one legible component each, not a whole screen shrunk.
+// Every region below prints its own on-screen scale when the script runs; keep
+// them at or above ~0.6x.
+const OFFER_ASPECT = 759 / 510; // offer_queue's, so the four stay consistent
+
 await region('dashboard', 'offer_queue',
   { x: 1080, y: 468, width: 392 }, [759, 510], 'Dashboard, Live Queue widget');
-await region('patient-treatments', 'offer_patient',
-  // x is inside SIDEBAR: this screen is captured at 1600 wide, where the rail is
-  // narrower, and starting at 256 shaved the first character off every heading.
-  { x: 236, y: 82, width: 1364 }, [2654, 1830], 'Priya Nair, header + treatments');
-await region('patient-chart', 'offer_chart',
-  // y starts below the patient header — at 300 the crop opened on the tail of the
-  // address and notes rows rather than on the chart itself.
-  { x: SIDEBAR, y: 362, width: 1650 }, [2401, 1662], 'Dental Chart, arches + legend');
-await region('payments', 'offer_billing',
-  { x: 248, y: 82, width: 1408 }, [2845, 1962], 'Billing & Payments, revenue + balances');
+
+// Patient header: name, age, phone, visit count, last visit, then the tab row and
+// the Treatments heading. The whole story of "patients and history" in 520px.
+await nativeRegion('patient-treatments', 'offer_patient',
+  { x: 236, y: 100, width: 520 }, OFFER_ASPECT, 'Priya Nair, header + treatments');
+
+// Wide enough to carry six teeth per arch AND the status legend, which is what
+// makes the colour coding mean anything. Narrower dropped the legend; wider put
+// the heading under 11px.
+await nativeRegion('patient-chart', 'offer_chart',
+  { x: SIDEBAR, y: 496, width: 660 }, OFFER_ASPECT, 'Dental Chart, teeth + legend');
+
+// The revenue headline, NOT the Remaining Balances list. Those rows put the
+// patient name and the amount owed ~1190 CSS px apart, so no crop tight enough to
+// be legible can hold both, and a list of names with the amounts sliced off is a
+// worse advert for billing than the day's takings in full.
+await nativeRegion('payments', 'offer_billing',
+  { x: 240, y: 100, width: 470 }, OFFER_ASPECT, 'Billing & Payments, revenue');
 
 // ── Operations' single panel ────────────────────────────────────────────────
 await region('appointments', 'panel_right',

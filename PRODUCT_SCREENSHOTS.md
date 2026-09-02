@@ -64,6 +64,31 @@ time. Changing one of them means matching that aspect, or the card it sits in
 will start cropping it. `panel_right.png` is shown at its own aspect and is not
 cropped by its frame.
 
+### The `offer_*` previews must be TIGHT crops
+
+`ImageCtn` caps these at `max-height: min(17rem, 100%)`, so each renders at about
+**394×272 on screen** no matter how large the file is. The scale from crop to slot
+is therefore:
+
+```
+on-screen scale = 394 / (crop width in CSS px)
+```
+
+That single number decides whether the preview is readable. A round of these
+cropped 1364–1650 CSS px of full-width layout into that slot — 0.24–0.29×, which
+put 14px body text on screen at 3–4px. It looked zoomed-out and washed, and no
+amount of extra output resolution helps, because the limit is the slot.
+
+`offer_queue` was always the readable one: a queue widget is only 392 CSS px
+wide, so it lands at ~1.0× and its text stays full size. The other three now
+follow it — **one legible component each, never a whole screen shrunk**. Keep new
+crops at or above ~0.6×; the crop script prints each one's scale when it runs.
+
+The corollary is that these four are stored at their **capture resolution** rather
+than resized up to a fixed width. Upscaling a 1040px crop to 2650px would add
+blur and no detail; what the layout needs from these files is the aspect, and
+~1000px against a ~394px slot is already two and a half times retina.
+
 Operations previously also carried a figures tile and a navigation tile
 (`panel_left.png`, `panel_centre.png`) as a supporting pair under the schedule.
 Both were dropped — they repeated what the section's own copy says — and their
